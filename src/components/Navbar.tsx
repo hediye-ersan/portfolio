@@ -30,7 +30,7 @@ const Navbar = () => {
         {/* CENTER LOGO */}
         <div className="flex items-center gap-3">
           <div className="w-[46px] h-[46px] bg-orange rounded-full flex items-center justify-center text-white font-semibold text-2xl">
-            JC
+            HE
           </div>
           <span className="text-2xl text-white font-semibold">
             Hediye

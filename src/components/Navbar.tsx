@@ -6,8 +6,8 @@ const Navbar = () => {
   const links = ["Home", "About", "Service", "Resume", "Project", "Contact"];
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-[1298px] h-[80px] bg-black rounded-full p-[10px] flex items-center justify-between">
+    <div className="w-full flex justify-center px-[71px] pb-9">
+      <div className="w-full h-[80px] bg-black rounded-full p-[10px] flex items-center justify-between">
 
         {/* LEFT */}
         <div className="flex gap-4 items-center">
@@ -28,7 +28,7 @@ const Navbar = () => {
         </div>
 
         {/* CENTER LOGO */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 px-20">
           <div className="w-[46px] h-[46px] bg-orange rounded-full flex items-center justify-center text-white font-semibold text-2xl">
             HE
           </div>

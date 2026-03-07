@@ -1,7 +1,7 @@
 export default function WhyHireMe() {
   return (
     <section id="why" className="bg-gray-100 py-[50px] px-[50px]">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-14">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center">
         <div className="group relative flex-[1.05] w-full max-w-[680px] min-w-[420px] overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
             {[1.04, 1.16].map((scale, i, arr) => (
@@ -18,7 +18,7 @@ export default function WhyHireMe() {
             ))}
           </div>
 
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#ff9b4a] rounded-[120px] z-[1]" />
+          {/* removed colored backdrop behind the photo */}
           <img
             src="/assets/hireme-photo.png"
             alt="Hire me"
@@ -28,7 +28,7 @@ export default function WhyHireMe() {
 
         <div className="flex-[0.9] w-full max-w-[540px] text-center lg:text-left">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-700">
-            Why <span className="text-[#ff8a00]">Hire me?</span>
+            Why <span className="text-orange">Hire me?</span>
           </h2>
 
           <p className="mt-4 text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
@@ -59,7 +59,7 @@ export default function WhyHireMe() {
               return (
                 <div
                   key={item.file}
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center"
+                  className="flex items-center justify-center"
                   style={{
                     animation: `float 7s ease-in-out infinite`,
                     animationDelay: `${item.delay}s`,
@@ -70,7 +70,7 @@ export default function WhyHireMe() {
                   <img
                     src={`/assets/${item.file}`}
                     alt={item.file}
-                    className="w-10 h-10 object-contain"
+                    className="object-contain"
                   />
                 </div>
               );
@@ -101,3 +101,4 @@ export default function WhyHireMe() {
     </section>
   )
 }
+

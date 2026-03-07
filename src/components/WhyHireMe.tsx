@@ -1,6 +1,6 @@
 export default function WhyHireMe() {
   return (
-    <section id="why" className="bg-gray-100 py-[50px] px-[50px]">
+    <section id="why" className="py-[50px] px-24 bg-gray-100">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center">
         <div className="group relative flex-[1.05] w-full max-w-[680px] min-w-[420px] overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
@@ -56,10 +56,15 @@ export default function WhyHireMe() {
               const colTop = [1, 2, 3, 4, 5, 6][idx];
               const colBottom = [1, 2, 3, 4, 5, 6][idx - 6];
               const col = row === 1 ? colTop : colBottom;
+              const isTailwind = item.file === "icons8-tailwindcss.svg";
               return (
                 <div
                   key={item.file}
-                  className="flex items-center justify-center"
+                  className={`flex items-center justify-center ${
+                    isTailwind
+                      ? "w-[80px] h-[80px] rounded-full bg-white shadow-md border border-slate-100"
+                      : ""
+                  }`}
                   style={{
                     animation: `float 7s ease-in-out infinite`,
                     animationDelay: `${item.delay}s`,

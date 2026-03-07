@@ -1,14 +1,117 @@
+import { motion } from "framer-motion";
+
 export default function MyServices() {
+  // Senin Full-Stack ve Analiz yetkinliklerine göre güncellenmiş başlıklar
+  const services = [
+    { 
+      title: "Full-Stack Development", 
+      image: "/assets/project-3.svg",
+      desc: "Java, Spring Boot ve React ile uçtan uca güvenli ve ölçeklenebilir sistemler." 
+    },
+    { 
+      title: "UI/UX Implementation", 
+      image: "/assets/project-1.svg",
+      desc: "Figma tasarımlarını pixel-perfect hassasiyetiyle modern web arayüzlerine dönüştürme."
+    },
+    { 
+      title: "Technical Analysis", 
+      image: "/assets/project-2.svg",
+      desc: "Matematiksel altyapı ile karmaşık problemler için optimize edilmiş teknik çözümler."
+    },
+  ];
+
   return (
-    <section id="services" className="bg-gray-50 py-16">
-      <div className="max-w-4xl mx-auto px-4">
-        <h3 className="text-2xl font-semibold">My Services</h3>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-4 border rounded">UI Development</div>
-          <div className="p-4 border rounded">Performance</div>
-          <div className="p-4 border rounded">Accessibility</div>
+    <section className="relative w-full py-24 bg-[#121212] overflow-hidden rounded-[3rem] border border-white/5">
+      
+      {/* HAREKETLİ TURUNCU BLOBLAR */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Sol Üst Blob */}
+        <motion.img
+          src="/assets/blob-left.svg"
+          animate={{ x: [0, 20, 0], y: [0, -40, 0], rotate: [0, 10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -left-10 top-20 opacity-40"
+        />
+        {/* Orta Üst Blob - Sadece Sağa Sola */}
+        <motion.img
+          src="/assets/blob-center.svg"
+          animate={{ x: [0, 150, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/4 top-10 opacity-30"
+        />
+        {/* Sağ Alt Blob */}
+        <motion.img
+          src="/assets/blob-right.svg"
+          animate={{ x: [0, -40, 0], y: [0, 30, 0], rotate: [0, -8, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -right-20 bottom-10 opacity-40"
+        />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-8">
+        {/* BAŞLIK KISMI */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
+          <div className="space-y-4">
+            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
+              My <span className="text-[#FF8A00]">Projects</span>
+            </h2>
+            <div className="h-1.5 w-32 bg-[#FF8A00] rounded-full"></div>
+          </div>
+          <p className="text-gray-400 max-w-sm text-lg leading-relaxed">
+            Matematiksel kesinlik ve modern teknolojileri birleştirerek uçtan uca dijital çözümler üretiyorum.
+          </p>
+        </div>
+
+        {/* SERVİS KARTLARI */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {services.map((service, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{ y: -15 }}
+              className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange/50"
+            >
+              {/* Kart İçindeki Başlık ve Açıklama */}
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+
+              {/* Görsel Alanı - Figma'daki kavisli yapıya sadık */}
+              <div className="relative flex-grow bg-black/20 mb-8 aspect-[4/3]">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Sağ Alt Buton Alanı - Figma'daki kavisli siyah buton efekti */}
+              <div className="flex justify-end mt-auto">
+                <div className="relative">
+                   {/* Buton arkasındaki kavisli siyah alan illüzyonu */}
+                  <button className="relative z-10 bg-[#1a1c24] p-6 rounded-full border border-white/10 text-orange hover:bg-orange hover:text-white transition-all duration-300 shadow-xl">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* DOTS */}
+        <div className="flex justify-center gap-3 mt-20">
+          <div className="w-12 h-3 bg-orange rounded-full shadow-[0_0_15px_rgba(255,138,0,0.5)]"></div>
+          <div className="w-3 h-3 bg-white/10 rounded-full"></div>
+          <div className="w-3 h-3 bg-white/10 rounded-full"></div>
         </div>
       </div>
     </section>
-  )
+  );
 }

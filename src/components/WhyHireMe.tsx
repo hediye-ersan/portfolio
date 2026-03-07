@@ -2,12 +2,27 @@ export default function WhyHireMe() {
   return (
     <section id="why" className="bg-gray-100 py-[50px] px-[50px]">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-14">
-        <div className="relative flex-[1.1] w-full max-w-[720px] min-w-[420px]">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#ff9b4a] rounded-[120px]" />
+        <div className="group relative flex-[1.05] w-full max-w-[680px] min-w-[420px] overflow-hidden">
+          <div className="pointer-events-none absolute inset-0">
+            {[1.04, 1.16].map((scale, i, arr) => (
+              <img
+                key={scale}
+                src="/assets/circles.svg"
+                alt="circles"
+                className="ring-layer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                style={{
+                  width: `${scale * 100}%`,
+                  animationDelay: `${i * 0.12}s`,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#ff9b4a] rounded-[120px] z-[1]" />
           <img
             src="/assets/hireme-photo.png"
             alt="Hire me"
-            className="relative z-10 w-full h-auto mx-auto object-contain drop-shadow-2xl"
+            className="relative z-20 w-full h-auto mx-auto object-contain drop-shadow-2xl"
           />
         </div>
 
@@ -65,10 +80,22 @@ export default function WhyHireMe() {
       </div>
 
       <style>{`
+        .ring-layer {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.9);
+        }
+        .group:hover .ring-layer {
+          animation: ring-pop 1s ease-out forwards;
+        }
         @keyframes float {
           0% { transform: translateY(0px); }
           50% { transform: translateY(-12px) translateX(4px); }
           100% { transform: translateY(0px); }
+        }
+        @keyframes ring-pop {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+          55% { opacity: 0.75; transform: translate(-50%, -50%) scale(1.03); }
+          100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
         }
       `}</style>
     </section>

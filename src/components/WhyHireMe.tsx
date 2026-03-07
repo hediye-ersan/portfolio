@@ -1,10 +1,76 @@
 export default function WhyHireMe() {
   return (
-    <section id="why" className="bg-gray-50 py-16">
-      <div className="max-w-4xl mx-auto px-4">
-        <h3 className="text-2xl font-semibold">Why Hire Me</h3>
-        <p className="mt-4">I deliver maintainable, tested, and accessible frontends.</p>
+    <section id="why" className="bg-gray-100 py-[50px] px-[50px]">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-14">
+        <div className="relative flex-[1.1] w-full max-w-[720px] min-w-[420px]">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#ff9b4a] rounded-[120px]" />
+          <img
+            src="/assets/hireme-photo.png"
+            alt="Hire me"
+            className="relative z-10 w-full h-auto mx-auto object-contain drop-shadow-2xl"
+          />
+        </div>
+
+        <div className="flex-[0.9] w-full max-w-[540px] text-center lg:text-left">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-700">
+            Why <span className="text-[#ff8a00]">Hire me?</span>
+          </h2>
+
+          <p className="mt-4 text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
+            With the strong technical foundation I developed during my six-month intensive full-stack training program and my mastery of TypeScript, I am ready to overcome technical challenges. With my disciplined work ethic and emphasis on code quality, I aim to bring fresh energy and a meticulous engineering perspective to your team.
+          </p>
+
+
+          <div className="mt-12 grid grid-cols-6 grid-rows-2 gap-4 justify-items-center w-full max-w-[560px] mx-auto lg:mx-0">
+            {[
+              { file: "js-logo 1.svg", top: "8%", left: "6%", delay: 0 },
+              { file: "react-logo 1.svg", top: "8%", left: "44%", delay: 0.4 },
+              { file: "redux-logo 1.svg", top: "8%", left: "63%", delay: 0.6 },
+              { file: "Group 15.svg", top: "58%", left: "57%", delay: 1.6 },
+              { file: "Group 16.svg", top: "58%", left: "74%", delay: 1.8 },
+              { file: "Intellij-logo 1.svg", top: "58%", left: "23%", delay: 1.2 },
+              { file: "icons8-tailwindcss.svg", delay: -0.1 },
+              { file: "node-logo 1.svg", top: "8%", left: "25%", delay: 0.2 },
+              { file: "vscode-logo 1.svg", top: "8%", left: "82%", delay: 0.8 },
+              { file: "postman-logo 1.svg", top: "58%", left: "6%", delay: 1.0 },
+              { file: "figma-logo 1.svg", top: "58%", left: "40%", delay: 1.4 },
+              { file: "Group 17.svg", top: "58%", left: "88%", delay: 2.0 },
+            ].map((item, idx) => {
+              const row = idx < 6 ? 1 : 2;
+              // center the top row by shifting columns (6 items)
+              const colTop = [1, 2, 3, 4, 5, 6][idx];
+              const colBottom = [1, 2, 3, 4, 5, 6][idx - 6];
+              const col = row === 1 ? colTop : colBottom;
+              return (
+                <div
+                  key={item.file}
+                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center"
+                  style={{
+                    animation: `float 7s ease-in-out infinite`,
+                    animationDelay: `${item.delay}s`,
+                    gridColumnStart: col,
+                    gridRowStart: row,
+                  }}
+                >
+                  <img
+                    src={`/assets/${item.file}`}
+                    alt={item.file}
+                    className="w-10 h-10 object-contain"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-12px) translateX(4px); }
+          100% { transform: translateY(0px); }
+        }
+      `}</style>
     </section>
   )
 }

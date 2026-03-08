@@ -5,7 +5,7 @@ export default function Profile() {
   const [hoveredButton, setHoveredButton] = useState<"portfolio" | "hireme">("portfolio");
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-start overflow-hidden pt-9 font-sans">
+    <section className="relative w-full max-w-7xl mx-auto my-auto  flex flex-col items-center justify-start overflow-hidden pt-9 font-sans">
       
       {/* ANA KAPSAYICI */}
       <div className="group relative w-full h-[850px] flex flex-col items-center justify-center">
@@ -29,7 +29,7 @@ export default function Profile() {
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold text-gray-900 leading-tight tracking-tight">
-            I'm <span className="text-[#FF8A00]">Hediye</span>, <br />
+            I'm <span className="text-orange">Hediye</span>, <br />
             <span className="text-gray-900">Web Developer</span>
           </h1>
           
@@ -59,7 +59,7 @@ export default function Profile() {
             
             {/* KAYAN TURUNCU ARKA PLAN (INDICATOR) */}
             <div 
-              className={`absolute h-[calc(100%-16px)] transition-all duration-500 ease-in-out bg-[#FF8A00] rounded-full shadow-lg ${
+              className={`absolute h-[calc(100%-16px)] transition-all duration-500 ease-in-out bg-orange rounded-full shadow-lg ${
                 hoveredButton === "portfolio" 
                   ? "left-2 w-[52%]" 
                   : "left-[46%] w-[52%]"
@@ -105,7 +105,7 @@ export default function Profile() {
         </div>
 
         {/* YAN METİNLER */}
-        <div className="absolute left-[71px] top-1/2 -translate-y-1/2 max-w-[300px] z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[280px] hidden xl:block">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 max-w-[300px] z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[280px] hidden xl:block">
            <span className="text-7xl text-gray-700 font-serif block mb-2">“</span>
            <p className="text-gray-700 font-medium text-xl leading-relaxed">
              Jenny's Exceptional product design ensure our website's success. <br />
@@ -113,8 +113,8 @@ export default function Profile() {
            </p>
         </div>
 
-        <div className="absolute right-[71px] top-1/2 -translate-y-1/2 z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[280px] hidden xl:block">
-           <div className="flex text-[#FF8A00] text-4xl mb-2">★★★★★</div>
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[280px] hidden xl:block">
+           <div className="flex text-orange text-4xl mb-2">★★★★★</div>
            <p className="text-6xl font-bold text-gray-900 leading-none">10 Years</p>
            <p className="text-xl text-gray-500 tracking-[0.2em] uppercase mt-2">Experience</p>
         </div>

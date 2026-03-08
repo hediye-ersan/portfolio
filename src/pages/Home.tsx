@@ -4,6 +4,7 @@ import Experiences from '../components/Experiences'
 import WhyHireMe from '../components/WhyHireMe'
 import MyProjects from '../components/MyProjects'
 import LetDiscuss from '../components/LetDiscuss'
+import InfiniteMarquee from '../components/InfiniteMarquee'
 import Footer from '../components/Footer'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <WhyHireMe />
       <MyProjects />
       <LetDiscuss />
+      <InfiniteMarquee />
       <Footer />
     </div>
   )

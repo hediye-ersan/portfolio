@@ -1,0 +1,8 @@
+.marquee {
+  animation: marquee 18s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}

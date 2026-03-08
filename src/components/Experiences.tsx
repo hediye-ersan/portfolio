@@ -44,7 +44,7 @@ export default function Experiences() {
               <div key={idx} className="relative flex items-start justify-between w-full">
                 
                 {/* SOL TARAF: Şirket ve Tarih */}
-                <div className="w-[42%] text-left pr-12 pt-1">
+                <div className="w-[42%] text-left pt-1">
                   <h3 className="text-[2.5rem] font-bold text-gray-700 leading-tight mb-2">
                     {exp.company}
                   </h3>

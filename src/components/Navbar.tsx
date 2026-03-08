@@ -6,7 +6,7 @@ const Navbar = () => {
   const links = ["Home", "About", "Service", "Resume", "Project", "Contact"];
 
   return (
-    <div className="w-full flex justify-center px-[71px] pb-9">
+    <div className="w-full flex justify-center mt-9 pb-9 max-w-7xl mx-auto">
       <div className="w-full h-[80px] bg-black rounded-full p-[10px] flex items-center justify-between">
 
         {/* LEFT */}

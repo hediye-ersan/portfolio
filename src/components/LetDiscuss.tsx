@@ -1,8 +1,41 @@
+import { useEffect, useState } from "react"
 import type { JSX } from "react"
+import { motion } from "framer-motion"
+import { FiArrowUpRight, FiAward, FiCode, FiStar } from "react-icons/fi"
 
 const accent = "#ff8a00"
 
 export default function LetDiscuss() {
+  const email = "hediyesnl9@gmail.com"
+  const [typed, setTyped] = useState("")
+  const [phase, setPhase] = useState<"typing" | "button" | "press" | "idle">("typing")
+  const [loopId, setLoopId] = useState(0)
+
+  useEffect(() => {
+    setTyped("")
+    setPhase("typing")
+    let idx = 0
+    const typeTimer = setInterval(() => {
+      setTyped(email.slice(0, idx + 1))
+      idx += 1
+      if (idx === email.length) {
+        clearInterval(typeTimer)
+        setTimeout(() => setPhase("button"), 600)
+        setTimeout(() => setPhase("press"), 1050)
+        setTimeout(() => setPhase("idle"), 1400)
+        setTimeout(() => setLoopId((v) => v + 1), 2300)
+      }
+    }, 70)
+
+    return () => clearInterval(typeTimer)
+  }, [loopId])
+
+  const cursorVariants = {
+    typing: { opacity: 1, x: "10%", y: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
+    button: { opacity: 1, x: "92%", y: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
+    press: { opacity: 1, x: "92%", y: "50%", scale: 0.9, filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.18))" },
+    idle: { opacity: 0, x: "92%", y: "50%", scale: 1 },
+  }
 
   return (
     <section
@@ -20,33 +53,50 @@ export default function LetDiscuss() {
           </p>
         </div>
 
-        <a
-          href="mailto:hediye@example.com?subject=Proje%20Teklifi%20%2F%20İletişim"
-          className="group mx-auto w-full max-w-4xl rounded-full border border-slate-200 bg-white shadow-sm transition-all hover:shadow-lg hover:-translate-y-0.5 hover:border-[#ff8a00]"
-        >
-          <div className="flex items-center justify-center gap-4 px-4 md:px-6 py-3 md:py-4">
-            <span
-              className="flex items-center justify-center rounded-full w-14 h-14 shrink-0 transition-transform group-hover:scale-105"
-              style={{ backgroundColor: "rgba(255,138,0,0.14)" }}
-            >
-              <img src="/assets/email.svg" alt="email" className="w-8 h-8" />
+        <div className="relative mx-auto w-full max-w-4xl">
+          <div className="flex items-center gap-4 md:gap-6 px-4 md:px-5 py-3 md:py-3.5 rounded-full border shadow-sm">
+            <span className="flex items-center justify-center rounded-full shrink-0">
+              <img src="/assets/email.svg" alt="Email icon" className="w-full" />
             </span>
 
-            <div className="flex-1 text-left">
-              <p className="text-lg md:text-xl text-gray-700 font-semibold">Click to Start a Discussion</p>
-              <p className="text-sm md:text-base text-slate-400 group-hover:text-slate-500 transition-colors">
-                Send me an Email
-              </p>
+            <div className="flex-1 relative">
+              <div className="text-base md:text-lg text-gray-700">{typed || "Enter Email Address"}</div>
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 text-base md:text-lg text-gray-700 opacity-0 select-none">
+                {email}
+              </div>
             </div>
+
+            <motion.button
+              type="button"
+              aria-label="Send email"
+              className={`relative inline-flex items-center justify-center px-8 md:px-10 py-5 md:py-3.5 rounded-full text-white font-semibold text-lg leading-none transition-colors ${
+                phase === "press" ? " bg-[#ff8a00]" : "bg-orange"
+              }`}
+              animate={phase === "press" ? { scale: 0.95 } : { scale: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 18 }}
+              onClick={() => (window.location.href = `mailto:${email}?subject=Merhaba%20Hediye`)}
+              style={{ boxShadow: "0 10px 25px -18px rgba(0,0,0,0.4)" }}
+            >
+              Send
+            </motion.button>
           </div>
-        </a>
+
+          <motion.div
+            className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 z-10"
+            variants={cursorVariants}
+            animate={phase}
+            transition={{ type: "spring", stiffness: 280, damping: 22 }}
+          >
+            <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-white border border-slate-700 shadow-[0_4px_8px_-4px_rgba(0,0,0,0.4)]" />
+          </motion.div>
+        </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-slate-700 text-base md:text-lg">
-          <SocialStat icon={() => <span className="text-lg">🎓</span>} label="Sakarya Üni. Matematik Mezunu" />
+          <SocialStat icon={() => <FiAward className="w-5 h-5 text-orange-500" />} label="Sakarya Univ. Mathematics Graduate" />
           <Divider />
-          <SocialStat icon={() => <span className="text-lg">💻</span>} label="Full-Stack Web Developer" />
+          <SocialStat icon={() => <FiCode className="w-5 h-5 text-orange-500" />} label="Full-Stack Web Developer" />
           <Divider />
-          <SocialStat icon={() => <span className="text-lg">✨</span>} label="UI/UX & Modern Design" />
+          <SocialStat icon={() => <FiStar className="w-5 h-5 text-orange-500" />} label="UI/UX & Modern Design" />
         </div>
       </div>
     </section>

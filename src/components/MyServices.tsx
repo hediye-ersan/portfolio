@@ -21,7 +21,8 @@ export default function MyServices() {
   ];
 
   return (
-    <section className="relative w-full py-24 bg-[#121212] overflow-hidden rounded-[3rem] border border-white/5">
+    <section className="relative w-full py-24 overflow-hidden rounded-[3rem] border border-white/5"
+      style={{ backgroundImage: "url('/assets/image-bg.svg')", backgroundSize: "cover", backgroundPosition: "center" }}>
       
       {/* HAREKETLİ TURUNCU BLOBLAR */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -53,9 +54,9 @@ export default function MyServices() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
           <div className="space-y-4">
             <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
-              My <span className="text-[#FF8A00]">Projects</span>
+              My <span className="text-orange">Projects</span>
             </h2>
-            <div className="h-1.5 w-32 bg-[#FF8A00] rounded-full"></div>
+            <div className="h-1.5 w-32 bg-orange rounded-full"></div>
           </div>
           <p className="text-gray-400 max-w-sm text-lg leading-relaxed">
             Matematiksel kesinlik ve modern teknolojileri birleştirerek uçtan uca dijital çözümler üretiyorum.

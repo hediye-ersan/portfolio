@@ -60,6 +60,12 @@ export default function MyProjects() {
   const next = () => setCurrent((c) => (c + 1) % total)
   const prev = () => setCurrent((c) => (c - 1 + total) % total)
 
+  const slideVariants = {
+    active: { opacity: 1, scale: 1, y: 0, x: 0, filter: "blur(0px)" },
+    sideLeft: { opacity: 0.72, scale: 0.92, y: 18, x: -28, filter: "blur(1px)" },
+    sideRight: { opacity: 0.72, scale: 0.92, y: 18, x: 28, filter: "blur(1px)" },
+  }
+
   return (
     <section id="projects" className="py-20 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -90,24 +96,23 @@ export default function MyProjects() {
                 const item = certificates[idx]
                 const role = position === 1 ? "active" : position === 0 ? "left" : "right"
                 const isActive = role === "active"
+                const variant = role === "active" ? "active" : role === "left" ? "sideLeft" : "sideRight"
 
                 return (
                   <motion.div
                     key={`${item.image}-${idx}`}
-                    className={`shrink-0 px-2 md:px-4 py-4 ${
-                      role === "active" ? "basis-full md:basis-2/5" : "basis-5/12 md:basis-1/4"
+                    className={`shrink-0 px-2 md:px-4 py-4 rounded-[32px] ${
+                      role === "active" ? "basis-full md:basis-2/5 bg-orange" : "basis-5/12 md:basis-1/4"
                     } ${role !== "active" ? "hidden sm:block" : ""}`}
-                    initial={{ opacity: 0.5, scale: 0.9, y: 12 }}
-                    animate={{
-                      opacity: isActive ? 1 : 0.68,
-                      scale: isActive ? 1 : 0.92,
-                      y: isActive ? 0 : 18,
-                    }}
-                    transition={{ type: "spring", stiffness: 230, damping: 23 }}
+                    layout
+                    initial={false}
+                    variants={slideVariants}
+                    animate={variant}
+                    transition={{ type: "spring", stiffness: 240, damping: 24 }}
                   >
                     <div
                       className={`relative overflow-hidden rounded-[32px] shadow-[0_28px_65px_-26px_rgba(0,0,0,0.35)] transition-all duration-300 ${
-                        isActive ? "bg-[#ff8a00] ring-4 ring-[#ffd9a3]" : "bg-white border border-slate-100/80"
+                        isActive ? "" : "bg-white border border-slate-100/80"
                       }`}
                     >
                       <div className="overflow-hidden rounded-[28px] bg-white">

@@ -53,6 +53,9 @@ export default function MyProjects() {
   const [current, setCurrent] = useState(0)
   const total = certificates.length
   const active = certificates[current]
+  const prevIndex = (current - 1 + total) % total
+  const nextIndex = (current + 1) % total
+  const visibleIndexes = [prevIndex, current, nextIndex]
 
   const next = () => setCurrent((c) => (c + 1) % total)
   const prev = () => setCurrent((c) => (c - 1 + total) % total)
@@ -81,32 +84,33 @@ export default function MyProjects() {
             <FiArrowLeft className="w-5 h-5" />
           </button>
 
-          <div className="overflow-hidden">
-            <div className="flex items-center">
-              {certificates.map((item, idx) => {
-                const isActive = idx === current
-                const isPrev = (current - 1 + total) % total === idx
-                const isNext = (current + 1) % total === idx
-
-                if (!isActive && !isPrev && !isNext) return null
+          <div className="overflow-visible">
+            <div className="flex items-center justify-center gap-3 md:gap-6 -mx-3">
+              {visibleIndexes.map((idx, position) => {
+                const item = certificates[idx]
+                const role = position === 1 ? "active" : position === 0 ? "left" : "right"
+                const isActive = role === "active"
 
                 return (
                   <motion.div
-                    key={item.image}
-                    className="w-full md:w-1/3 shrink-0 px-2 md:px-3 py-4"
-                    initial={{ opacity: 0.4, scale: 0.9 }}
+                    key={`${item.image}-${idx}`}
+                    className={`shrink-0 px-2 md:px-4 py-4 ${
+                      role === "active" ? "basis-full md:basis-2/5" : "basis-5/12 md:basis-1/4"
+                    } ${role !== "active" ? "hidden sm:block" : ""}`}
+                    initial={{ opacity: 0.5, scale: 0.9, y: 12 }}
                     animate={{
-                      opacity: isActive ? 1 : 0.55,
-                      scale: isActive ? 1 : 0.94,
+                      opacity: isActive ? 1 : 0.68,
+                      scale: isActive ? 1 : 0.92,
+                      y: isActive ? 0 : 18,
                     }}
-                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    transition={{ type: "spring", stiffness: 230, damping: 23 }}
                   >
                     <div
-                      className={`relative overflow-hidden rounded-3xl shadow-md p-3 transition-colors ${
-                        isActive ? "bg-[#ff8a00]" : "bg-white"
+                      className={`relative overflow-hidden rounded-[32px] shadow-[0_28px_65px_-26px_rgba(0,0,0,0.35)] transition-all duration-300 ${
+                        isActive ? "bg-[#ff8a00] ring-4 ring-[#ffd9a3]" : "bg-white border border-slate-100/80"
                       }`}
                     >
-                      <div className="overflow-hidden rounded-2xl bg-white">
+                      <div className="overflow-hidden rounded-[28px] bg-white">
                         <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                       </div>
                     </div>

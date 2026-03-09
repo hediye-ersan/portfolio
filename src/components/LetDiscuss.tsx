@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import type { JSX } from "react"
 import { motion } from "framer-motion"
-import { FiArrowUpRight, FiAward, FiCode, FiStar } from "react-icons/fi"
+import { FiArrowUpRight, FiAward, FiCode, FiStar, FiMousePointer } from "react-icons/fi"
 
 const accent = "#ff8a00"
 
@@ -31,10 +31,10 @@ export default function LetDiscuss() {
   }, [loopId])
 
   const cursorVariants = {
-    typing: { opacity: 1, x: "10%", y: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
-    button: { opacity: 1, x: "92%", y: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
-    press: { opacity: 1, x: "92%", y: "50%", scale: 0.9, filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.18))" },
-    idle: { opacity: 0, x: "92%", y: "50%", scale: 1 },
+    typing: { opacity: 1, left: "10%", top: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
+    button: { opacity: 1, left: "90%", top: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
+    press: { opacity: 1, left: "90%", top: "50%", scale: 0.9, filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.18))" },
+    idle: { opacity: 0, left: "90%", top: "50%", scale: 1 },
   }
 
   return (
@@ -87,7 +87,9 @@ export default function LetDiscuss() {
             animate={phase}
             transition={{ type: "spring", stiffness: 280, damping: 22 }}
           >
-            <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-white border border-slate-700 shadow-[0_4px_8px_-4px_rgba(0,0,0,0.4)]" />
+            <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white border border-slate-600 shadow-[0_4px_10px_-4px_rgba(0,0,0,0.4)] flex items-center justify-center">
+              <FiMousePointer className="w-4 h-4 md:w-5 md:h-5 text-slate-700" />
+            </div>
           </motion.div>
         </div>
 

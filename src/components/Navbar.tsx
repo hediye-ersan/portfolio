@@ -23,11 +23,21 @@ export default function Navbar() {
         </div>
 
         {/* CENTER LOGO */}
-        <div className="flex items-center gap-3 px-20">
-          <div className="w-[46px] h-[46px] bg-orange rounded-full flex items-center justify-center text-white font-semibold text-2xl">
-            HE
+        <div className="group flex items-center gap-3 px-14 relative flex-none">
+          <div className="transition-transform duration-300 group-hover:-translate-x-2">
+            <div className="logo-circle w-[46px] h-[46px] bg-orange rounded-full flex items-center justify-center text-white font-semibold text-2xl">
+              HE
+            </div>
           </div>
-          <span className="text-2xl text-white font-semibold">Hediye</span>
+          <div className="relative overflow-hidden h-[44px] w-[140px] flex items-center">
+            <span className="text-xl text-white font-semibold transition-opacity duration-300 group-hover:opacity-0">
+              Hediye
+            </span>
+            <div className="absolute inset-0 flex flex-col justify-center leading-tight opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="text-xs text-gray-200">Junior</span>
+              <span className="text-lg text-white font-semibold">Web Developer</span>
+            </div>
+          </div>
         </div>
 
         {/* RIGHT */}

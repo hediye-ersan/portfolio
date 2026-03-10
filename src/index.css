@@ -85,3 +85,29 @@ button:focus-visible {
 }
 
 /* marquee base class lives in component css */
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+  75% {
+    transform: rotate(-4deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.45s ease-in-out;
+}
+
+.group:hover .logo-circle {
+  animation: wiggle 0.45s ease-in-out;
+}

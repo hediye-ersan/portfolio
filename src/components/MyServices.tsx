@@ -15,15 +15,26 @@ export default function MyServices() {
       desc: "Geliştirme sürecine Postman ile API testlerini yaparak başladım; veri yapılarını önceden doğrulayıp hatasız bir entegrasyon sağladım.Projede Redux Store kullanarak; alışveriş sepeti, kullanıcı oturumu ve ürün filtreleme gibi karmaşık süreçleri tek bir noktadan yönettim.Redux Thunk ile asenkron API süreçlerini yönettim. Hazırladığım dinamik filtreleme sistemi sayesinde kullanıcıların kategorilere ve ürün özelliklerine göre gerçek zamanlı sonuçlar almasını sağlayan hızlı bir altyapı oluşturdum."
     },
     {
-      title: "Technical Analysis",
-      image: "/assets/project-2.svg",
-      desc: "Matematiksel altyapı ile karmaşık problemler için optimize edilmiş teknik çözümler."
+      title: "Portfolio Website",
+      image: "/assets/project-5.svg",
+      desc: "Kariyer yolculuğumun ilk portfolyo projesinde, modern web standartlarını ve merkezi state yönetimi prensiplerini uyguladım. LanguageContext.jsx üzerinden kurguladığım yapı sayesinde, myData.js içindeki Türkçe ve İngilizce veri setlerini tüm uygulamaya dinamik olarak dağıtan bir çoklu dil sistemi geliştirdim. DarkModeToggle.jsx ile tema yönetimi mekanizmalarını entegre ettim. Ayrıca animasyonlar ve tailwind css ile birlikte ux/ui tasarımına odaklanarak, görsel olarak etkileyici bir deneyim oluşturmayı hedefledim."
     },
     {
-      title: "New Project 4",
-      image: "/assets/project-4.svg",
-      desc: "4. proje eklendiğinde otomatik olarak ikinci sayfaya geçer."
+      title: "ShopCo Ecommerce",
+      image: "/assets/project-2.svg",
+      desc: "Figma üzerinde tasralanan e-ticaret sayfasını, pixel-perfect hassasiyetiyle ve modüler bir mimariyle tasarlamaya çalıştım. Geliştirme sürecinde React Context API kullanarak sepet yönetimi, kullanıcı yetkilendirme ve sipariş geçmişi gibi kritik süreçleri merkezi bir state mekanizmasıyla yönettim. Tasarımın her tarayıcıda tutarlı görünmesi için reset.css standartlarını uygularken, useMediaQuery gibi özel hook’lar ve Tailwind CSS ile cihaz tipine göre uyum sağlayan bir kullanıcı deneyimi kurguladım."
     },
+    {
+      title: "Pizza Order Page",
+      image: "/assets/project-4.svg",
+      desc: "Projede ana sayfa, sipariş formu ve başarı onayı aşamalarından oluşan sipariş akışı kurguladım. Sipariş formu içerisinde malzeme seçimi ve hamur kalınlığı gibi form verilerini React state ile yöneterek, verinin sadece doğru validasyonlardan geçtikten sonra siparişe dönüşmesini sağladım. Projede Cypress (E2E) entegrasyonu ve pizza.cy.js test senaryolarıyla, kullanıcı navigasyonunu ve form fonksiyonelliğini otomatikleştirerek geliştirme sağladım.Tasarım tarafını ise özel başlıklar kullanarak Css ile sağladım"
+    },
+    
+    {
+      title: "Full Stack Quiz",
+      image: "/assets/project-6.svg",
+      desc: "Full-stack eğitim sürecimde öğrendiğim bilgileri kalıcı hale getirmek ve kişisel bir başvuru kaynağı oluşturmak için bir Quiz uygulaması geliştirdim. Kendi araştırmalarımla hazırladığım 161 soruluk kapsamlı bir JSON veri setini (questions.json) yöneterek; frontend, backend ve veri tabanı konularında öğrenme platformu kurguladım.Bu çalışma, karmaşık teknik bilgileri yapılandırılmış bir veri modeline dönüştürme ve eğitim sürecini dijital bir araca dönüştürme motivasyonumu temsil etmektedir."
+    }
   ];
 
   // Projeleri 3'erli gruplara ayırıyoruz
@@ -85,7 +96,7 @@ export default function MyServices() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -15 }}
-                className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange/50"
+                className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange"
               >
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-orange transition-colors">
@@ -100,7 +111,7 @@ export default function MyServices() {
                     whileHover={{ opacity: 1 }}
                     className="absolute inset-0 bg-black/85 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
                   >
-                    <p className="text-gray-200 text-sm leading-relaxed line-clamp-12">
+                    <p className="text-gray-200 text-[13px] leading-relaxed line-clamp-20">
                       {service.desc}
                     </p>
                   </motion.div>

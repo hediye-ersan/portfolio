@@ -84,7 +84,7 @@ export default function MyServices() {
       <img
         src={service.image}
         alt={service.title}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
       />
 
       {/* Hover Durumunda Gelen Overlay ve Metin */}

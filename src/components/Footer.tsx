@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#272727] text-white">
-      <div className="max-w-6xl mx-auto px-6 py-12 md:py-14 rounded-t-3xl">
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-14 rounded-t-3xl">
         {/* Top row */}
         <div className="flex flex-wrap items-center justify-between gap-4 pb-8">
           <h2 className="text-4xl md:text-5xl font-semibold">Lets Connect there</h2>

@@ -1,14 +1,14 @@
 import { useState } from "react"
 import OrangeButton from "./ui/OrangeButton"
 
-const links = ["Home", "About", "Service", "Resume", "Project", "Contact"]
+const links = ["Home", "Project", "Experience", "Skills", "Certificate", "Contact"]
 
 export default function Navbar() {
   const [active, setActive] = useState("Home")
 
   return (
     <nav className="w-full flex justify-center mt-9 pb-9 max-w-7xl mx-auto">
-      <div className="w-full h-[80px] bg-black rounded-full p-[10px] flex items-center justify-between">
+      <div className="h-[80px] bg-black rounded-full p-[10px] flex items-center justify-between">
         {/* LEFT */}
         <div className="flex items-center gap-4">
           {links.slice(0, 3).map((item) =>
@@ -29,7 +29,7 @@ export default function Navbar() {
               HE
             </div>
           </div>
-          <div className="relative overflow-hidden h-[44px] w-[140px] flex items-center">
+        <div className="relative overflow-hidden h-[44px] w-[140px] flex items-center">
             <span className="text-xl text-white font-semibold transition-opacity duration-300 group-hover:opacity-0">
               Hediye
             </span>

@@ -1,28 +1,28 @@
-import { motion, AnimatePresence} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export default function MyServices() {
   const [currentPage, setCurrentPage] = useState(0);
   const services = [
-    { 
-      title: "JobCraft Cv Builder", 
+    {
+      title: "JobCraft Cv Builder",
       image: "/assets/project-3.svg",
-      desc: "Ekipçe geliştirdiğimiz cv hazırlama web uygulamasında ilk kez TypeScript yazarak temelimi oluşturdum ve takım çalışması deneyimi kazandım. Çok sayfalı akışları yönetmek için Redux Toolkit kullandık; CV adımlarını form yapısıyla kurup kullanıcı verisini Redux’ta tutarak canlı önizleme sağladım. İçerik yüksekliğini ölçen özel bir hook ile ikinci sayfaya otomatik geçişi çözdüm. Backend API’lerini Insomnia ile doğrulayıp entegre ettim. Yayına hazırlanan projede frontend geliştirici olarak aktif rol alıyorum." 
+      desc: "Ekipçe geliştirdiğimiz cv hazırlama web uygulamasında ilk kez TypeScript yazarak temelimi oluşturdum ve takım çalışması deneyimi kazandım. Çok sayfalı akışları yönetmek için Redux Toolkit kullandık; CV adımlarını form yapısıyla kurup kullanıcı verisini Redux’ta tutarak canlı önizleme sağladım. İçerik yüksekliğini ölçen özel bir hook ile ikinci sayfaya otomatik geçişi çözdüm. Backend API’lerini Insomnia ile doğrulayıp entegre ettim. Yayına hazırlanan projede frontend geliştirici olarak aktif rol alıyorum."
     },
-    { 
-      title: "UI/UX Implementation", 
+    {
+      title: "TrendKod",
       image: "/assets/project-1.svg",
-      desc: "Figma tasarımlarını pixel-perfect hassasiyetiyle modern web arayüzlerine dönüştürme."
+      desc: "Geliştirme sürecine Postman ile API testlerini yaparak başladım; veri yapılarını önceden doğrulayıp hatasız bir entegrasyon sağladım.Projede Redux Store kullanarak; alışveriş sepeti, kullanıcı oturumu ve ürün filtreleme gibi karmaşık süreçleri tek bir noktadan yönettim.Redux Thunk ile asenkron API süreçlerini yönettim. Hazırladığım dinamik filtreleme sistemi sayesinde kullanıcıların kategorilere ve ürün özelliklerine göre gerçek zamanlı sonuçlar almasını sağlayan hızlı bir altyapı oluşturdum."
     },
-    { 
-      title: "Technical Analysis", 
+    {
+      title: "Technical Analysis",
       image: "/assets/project-2.svg",
       desc: "Matematiksel altyapı ile karmaşık problemler için optimize edilmiş teknik çözümler."
     },
-    { 
-      title: "New Project 4", 
-      image: "/assets/project-4.svg", 
-      desc: "4. proje eklendiğinde otomatik olarak ikinci sayfaya geçer." 
+    {
+      title: "New Project 4",
+      image: "/assets/project-4.svg",
+      desc: "4. proje eklendiğinde otomatik olarak ikinci sayfaya geçer."
     },
   ];
 
@@ -34,7 +34,7 @@ export default function MyServices() {
   return (
     <section className="relative w-full py-24 overflow-hidden rounded-[3rem] border border-white/5"
       style={{ backgroundImage: "url('/assets/image-bg.svg')", backgroundSize: "cover", backgroundPosition: "center" }}>
-      
+
       {/* HAREKETLİ TURUNCU BLOBLAR */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Sol Üst Blob */}
@@ -95,12 +95,14 @@ export default function MyServices() {
 
                 <div className="relative flex-grow bg-black/20 mb-6 aspect-[4/3] overflow-hidden rounded-[1.4rem]">
                   <img src={service.image} alt={service.title} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                     className="absolute inset-0 bg-black/85 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
                   >
-                    <p className="text-gray-200 text-sm leading-relaxed">{service.desc}</p>
+                    <p className="text-gray-200 text-sm leading-relaxed line-clamp-12">
+                      {service.desc}
+                    </p>
                   </motion.div>
                 </div>
 
@@ -121,11 +123,10 @@ export default function MyServices() {
             <button
               key={index}
               onClick={() => setCurrentPage(index)}
-              className={`transition-all duration-500 rounded-full ${
-                currentPage === index 
-                ? "w-12 h-3 bg-orange shadow-[0_0_15px_rgba(255,138,0,0.5)]" 
-                : "w-3 h-3 bg-white/10 hover:bg-white/30"
-              }`}
+              className={`transition-all duration-500 rounded-full ${currentPage === index
+                  ? "w-12 h-3 bg-orange shadow-[0_0_15px_rgba(255,138,0,0.5)]"
+                  : "w-3 h-3 bg-white/10 hover:bg-white/30"
+                }`}
             />
           ))}
         </div>

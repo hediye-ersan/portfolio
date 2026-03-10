@@ -108,15 +108,15 @@ export default function Profile() {
         <div className="absolute left-0 top-1/2 -translate-y-1/2 max-w-[300px] z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[280px] hidden xl:block">
            <span className="text-7xl text-gray-700 font-serif block mb-2">“</span>
            <p className="text-gray-700 font-medium text-xl leading-relaxed">
-             Jenny's Exceptional product design ensure our website's success. <br />
-             Highly Recommended
+             I believe in the power of analytical thinking<br />
+              and user-centered design in software.
            </p>
         </div>
 
         <div className="absolute right-0 top-1/2 -translate-y-1/2 z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[280px] hidden xl:block">
            <div className="flex text-orange text-4xl mb-2">★★★★★</div>
-           <p className="text-6xl font-bold text-gray-900 leading-none">10 Years</p>
-           <p className="text-xl text-gray-500 tracking-[0.2em] uppercase mt-2">Experience</p>
+           <p className="text-6xl font-bold text-gray-900 leading-none">960+</p>
+           <p className="text-xl text-gray-500 tracking-[0.2em] uppercase mt-2">Hour Technical Training</p>
         </div>
 
       </div>

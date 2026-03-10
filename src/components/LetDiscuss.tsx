@@ -8,22 +8,21 @@ const accent = "#ff8a00"
 export default function LetDiscuss() {
   const email = "hediyesnl9@gmail.com"
   const [typed, setTyped] = useState("")
-  const [phase, setPhase] = useState<"typing" | "button" | "press" | "idle">("typing")
+  const [phase, setPhase] = useState<"typing" | "button" | "press" | "idle">("button")
   const [loopId, setLoopId] = useState(0)
 
   useEffect(() => {
     setTyped("")
-    setPhase("typing")
+    setPhase("button")
     let idx = 0
     const typeTimer = setInterval(() => {
       setTyped(email.slice(0, idx + 1))
       idx += 1
       if (idx === email.length) {
         clearInterval(typeTimer)
-        setTimeout(() => setPhase("button"), 600)
-        setTimeout(() => setPhase("press"), 1050)
-        setTimeout(() => setPhase("idle"), 1400)
-        setTimeout(() => setLoopId((v) => v + 1), 2300)
+        setTimeout(() => setPhase("press"), 200)
+        setTimeout(() => setPhase("idle"), 500)
+        setTimeout(() => setLoopId((v) => v + 1), 1200)
       }
     }, 70)
 
@@ -32,8 +31,8 @@ export default function LetDiscuss() {
 
   const cursorVariants = {
     typing: { opacity: 1, left: "10%", top: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
-    button: { opacity: 1, left: "90%", top: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
-    press: { opacity: 1, left: "90%", top: "50%", scale: 0.9, filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.18))" },
+    button: { opacity: 1, left: "92%", top: "50%", scale: 1, filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.12))" },
+    press: { opacity: 1, left: "92%", top: "50%", scale: 0.9, filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.18))" },
     idle: { opacity: 0, left: "90%", top: "50%", scale: 1 },
   }
 

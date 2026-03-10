@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
+import { useState } from "react";
 
 export default function MyServices() {
-  // Senin Full-Stack ve Analiz yetkinliklerine göre güncellenmiş başlıklar
+  const [currentPage, setCurrentPage] = useState(0);
   const services = [
     { 
       title: "JobCraft Cv Builder", 
@@ -18,7 +19,17 @@ export default function MyServices() {
       image: "/assets/project-2.svg",
       desc: "Matematiksel altyapı ile karmaşık problemler için optimize edilmiş teknik çözümler."
     },
+    { 
+      title: "New Project 4", 
+      image: "/assets/project-4.svg", 
+      desc: "4. proje eklendiğinde otomatik olarak ikinci sayfaya geçer." 
+    },
   ];
+
+  // Projeleri 3'erli gruplara ayırıyoruz
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(services.length / itemsPerPage);
+  const currentItems = services.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
 
   return (
     <section className="relative w-full py-24 overflow-hidden rounded-[3rem] border border-white/5"
@@ -63,62 +74,60 @@ export default function MyServices() {
           </p>
         </div>
 
-        {/* SERVİS KARTLARI */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-         {services.map((service, idx) => (
-  <motion.div
-    key={idx}
-    whileHover={{ y: -15 }}
-    className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange/50"
-  >
-    {/* Üst Kısım: Sadece Başlık */}
-    <div className="mb-6">
-      <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-orange transition-colors">
-        {service.title}
-      </h3>
-    </div>
+        {/* PROJE KARTLARI - ANIMASYONLU GEÇİŞ */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 min-h-[500px]">
+          <AnimatePresence mode="wait">
+            {currentItems.map((service, idx) => (
+              <motion.div
+                key={service.title} // Sayfa değiştiğinde tetiklenmesi için benzersiz key
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -15 }}
+                className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange/50"
+              >
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-orange transition-colors">
+                    {service.title}
+                  </h3>
+                </div>
 
-    {/* Görsel ve Hover Açıklama Alanı */}
-    <div className="relative flex-grow bg-black/20 mb-6 aspect-[4/3] overflow-hidden rounded-[1.4rem]">
-      {/* Proje Resmi */}
-      <img
-        src={service.image}
-        alt={service.title}
-        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-      />
+                <div className="relative flex-grow bg-black/20 mb-6 aspect-[4/3] overflow-hidden rounded-[1.4rem]">
+                  <img src={service.image} alt={service.title} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-black/85 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
+                  >
+                    <p className="text-gray-200 text-sm leading-relaxed">{service.desc}</p>
+                  </motion.div>
+                </div>
 
-      {/* Hover Durumunda Gelen Overlay ve Metin */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
-      >
-        <p className="text-gray-200 text-sm leading-relaxed">
-          {service.desc}
-        </p>
-      </motion.div>
-    </div>
-
-    {/* Sağ Alt Buton Alanı */}
-    <div className="flex justify-end mt-auto">
-      <button className="relative bg-[#1a1c24] p-5 rounded-full border border-white/10 text-orange hover:bg-orange hover:text-white transition-all duration-300 shadow-xl">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
-      </button>
-    </div>
-  </motion.div>
-))}
+                <div className="flex justify-end mt-auto">
+                  <button className="relative bg-[#1a1c24] p-5 rounded-full border border-white/10 text-orange hover:bg-orange hover:text-white transition-all duration-300 shadow-xl">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
 
-        {/* DOTS */}
+        {/* DINAMIK DOTS (NOKTALAR) */}
         <div className="flex justify-center gap-3 mt-20">
-          <div className="w-12 h-3 bg-orange rounded-full shadow-[0_0_15px_rgba(255,138,0,0.5)]"></div>
-          <div className="w-3 h-3 bg-white/10 rounded-full"></div>
-          <div className="w-3 h-3 bg-white/10 rounded-full"></div>
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentPage(index)}
+              className={`transition-all duration-500 rounded-full ${
+                currentPage === index 
+                ? "w-12 h-3 bg-orange shadow-[0_0_15px_rgba(255,138,0,0.5)]" 
+                : "w-3 h-3 bg-white/10 hover:bg-white/30"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

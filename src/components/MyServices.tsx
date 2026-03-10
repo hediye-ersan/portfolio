@@ -4,9 +4,9 @@ export default function MyServices() {
   // Senin Full-Stack ve Analiz yetkinliklerine göre güncellenmiş başlıklar
   const services = [
     { 
-      title: "Full-Stack Development", 
+      title: "JobCraft Cv Builder", 
       image: "/assets/project-3.svg",
-      desc: "Java, Spring Boot ve React ile uçtan uca güvenli ve ölçeklenebilir sistemler." 
+      desc: "Ekipçe geliştirdiğimiz cv hazırlama web uygulamasında ilk kez TypeScript yazarak temelimi oluşturdum ve takım çalışması deneyimi kazandım. Çok sayfalı akışları yönetmek için Redux Toolkit kullandık; CV adımlarını form yapısıyla kurup kullanıcı verisini Redux’ta tutarak canlı önizleme sağladım. İçerik yüksekliğini ölçen özel bir hook ile ikinci sayfaya otomatik geçişi çözdüm. Backend API’lerini Insomnia ile doğrulayıp entegre ettim. Yayına hazırlanan projede frontend geliştirici olarak aktif rol alıyorum." 
     },
     { 
       title: "UI/UX Implementation", 
@@ -65,46 +65,54 @@ export default function MyServices() {
 
         {/* SERVİS KARTLARI */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {services.map((service, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ y: -15 }}
-              className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange/50"
-            >
-              {/* Kart İçindeki Başlık ve Açıklama */}
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {service.desc}
-                </p>
-              </div>
+         {services.map((service, idx) => (
+  <motion.div
+    key={idx}
+    whileHover={{ y: -15 }}
+    className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange/50"
+  >
+    {/* Üst Kısım: Sadece Başlık */}
+    <div className="mb-6">
+      <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-orange transition-colors">
+        {service.title}
+      </h3>
+    </div>
 
-              {/* Görsel Alanı - Figma'daki kavisli yapıya sadık */}
-              <div className="relative flex-grow bg-black/20 mb-8 aspect-[4/3]">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
+    {/* Görsel ve Hover Açıklama Alanı */}
+    <div className="relative flex-grow bg-black/20 mb-6 aspect-[4/3] overflow-hidden rounded-[1.4rem]">
+      {/* Proje Resmi */}
+      <img
+        src={service.image}
+        alt={service.title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      />
 
-              {/* Sağ Alt Buton Alanı - Figma'daki kavisli siyah buton efekti */}
-              <div className="flex justify-end mt-auto">
-                <div className="relative">
-                   {/* Buton arkasındaki kavisli siyah alan illüzyonu */}
-                  <button className="relative z-10 bg-[#1a1c24] p-6 rounded-full border border-white/10 text-orange hover:bg-orange hover:text-white transition-all duration-300 shadow-xl">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+      {/* Hover Durumunda Gelen Overlay ve Metin */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 bg-black/80 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
+      >
+        <p className="text-gray-200 text-sm leading-relaxed">
+          {service.desc}
+        </p>
+      </motion.div>
+    </div>
+
+    {/* Sağ Alt Buton Alanı */}
+    <div className="flex justify-end mt-auto">
+      <button className="relative bg-[#1a1c24] p-5 rounded-full border border-white/10 text-orange hover:bg-orange hover:text-white transition-all duration-300 shadow-xl">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </button>
+    </div>
+  </motion.div>
+))}
         </div>
+
 
         {/* DOTS */}
         <div className="flex justify-center gap-3 mt-20">

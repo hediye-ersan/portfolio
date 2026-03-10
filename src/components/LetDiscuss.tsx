@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import type { JSX } from "react"
 import { motion } from "framer-motion"
-import { FiArrowUpRight, FiAward, FiCode, FiStar, FiMousePointer } from "react-icons/fi"
+import {FiAward, FiCode, FiStar, FiMousePointer } from "react-icons/fi"
 
 const accent = "#ff8a00"
 
@@ -42,7 +42,7 @@ export default function LetDiscuss() {
       className="py-20 px-4 bg-white flex items-center justify-center"
       style={{ fontFamily: "Inter, 'Helvetica Neue', Arial, sans-serif" }}
     >
-      <div className="w-full max-w-5xl text-center space-y-8">
+      <div className="w-full max-w-7xl text-center space-y-8">
         <div className="space-y-3 md:space-y-4">
           <p className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
             Have an awesome project idea?

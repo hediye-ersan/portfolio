@@ -1,39 +1,60 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
+interface Project {
+  title: string;
+  image: string;
+  desc: string;
+  github?: string;
+  website?: string;
+}
+
 export default function MyServices() {
   const [currentPage, setCurrentPage] = useState(0);
+  
   const services = [
     {
       title: "JobCraft Cv Builder",
       image: "/assets/project-3.svg",
-      desc: "Ekipçe geliştirdiğimiz cv hazırlama web uygulamasında ilk kez TypeScript yazarak temelimi oluşturdum ve takım çalışması deneyimi kazandım. Çok sayfalı akışları yönetmek için Redux Toolkit kullandık; CV adımlarını form yapısıyla kurup kullanıcı verisini Redux’ta tutarak canlı önizleme sağladım. İçerik yüksekliğini ölçen özel bir hook ile ikinci sayfaya otomatik geçişi çözdüm. Backend API’lerini Insomnia ile doğrulayıp entegre ettim. Yayına hazırlanan projede frontend geliştirici olarak aktif rol alıyorum."
+      desc: "Ekipçe geliştirdiğimiz cv hazırlama web uygulamasında ilk kez TypeScript yazarak temelimi oluşturdum ve takım çalışması deneyimi kazandım. Çok sayfalı akışları yönetmek için Redux Toolkit kullandık; CV adımlarını form yapısıyla kurup kullanıcı verisini Redux'ta tutarak canlı önizleme sağladım. İçerik yüksekliğini ölçen özel bir hook ile ikinci sayfaya otomatik geçişi çözdüm. Backend API'lerini Insomnia ile doğrulayıp entegre ettim. Yayına hazırlanan projede frontend geliştirici olarak aktif rol alıyorum.",
+      github: "https://github.com/hediyeer/JOBCRAFT-CV-BUILDER",
+      website: "https://jobcraft-b23fc.web.app/"
     },
     {
       title: "TrendKod",
       image: "/assets/project-1.svg",
-      desc: "Geliştirme sürecine Postman ile API testlerini yaparak başladım; veri yapılarını önceden doğrulayıp hatasız bir entegrasyon sağladım.Projede Redux Store kullanarak; alışveriş sepeti, kullanıcı oturumu ve ürün filtreleme gibi karmaşık süreçleri tek bir noktadan yönettim.Redux Thunk ile asenkron API süreçlerini yönettim. Hazırladığım dinamik filtreleme sistemi sayesinde kullanıcıların kategorilere ve ürün özelliklerine göre gerçek zamanlı sonuçlar almasını sağlayan hızlı bir altyapı oluşturdum."
+      desc: "Geliştirme sürecine Postman ile API testlerini yaparak başladım; veri yapılarını önceden doğrulayıp hatasız bir entegrasyon sağladım.Projede Redux Store kullanarak; alışveriş sepeti, kullanıcı oturumu ve ürün filtreleme gibi karmaşık süreçleri tek bir noktadan yönettim.Redux Thunk ile asenkron API süreçlerini yönettim. Hazırladığım dinamik filtreleme sistemi sayesinde kullanıcıların kategorilere ve ürün özelliklerine göre gerçek zamanlı sonuçlar almasını sağlayan hızlı bir altyapı oluşturdum.",
+      github: "https://github.com/hediye-ersan/Trend-Kod",
+      website: "https://trend-kod.vercel.app/"
     },
     {
       title: "Portfolio Website",
       image: "/assets/project-5.svg",
-      desc: "Kariyer yolculuğumun ilk portfolyo projesinde, modern web standartlarını ve merkezi state yönetimi prensiplerini uyguladım. LanguageContext.jsx üzerinden kurguladığım yapı sayesinde, myData.js içindeki Türkçe ve İngilizce veri setlerini tüm uygulamaya dinamik olarak dağıtan bir çoklu dil sistemi geliştirdim. DarkModeToggle.jsx ile tema yönetimi mekanizmalarını entegre ettim. Ayrıca animasyonlar ve tailwind css ile birlikte ux/ui tasarımına odaklanarak, görsel olarak etkileyici bir deneyim oluşturmayı hedefledim."
+      desc: "Kariyer yolculuğumun ilk portfolyo projesinde, modern web standartlarını ve merkezi state yönetimi prensiplerini uyguladım. LanguageContext.jsx üzerinden kurguladığım yapı sayesinde, myData.js içindeki Türkçe ve İngilizce veri setlerini tüm uygulamaya dinamik olarak dağıtan bir çoklu dil sistemi geliştirdim. DarkModeToggle.jsx ile tema yönetimi mekanizmalarını entegre ettim. Ayrıca animasyonlar ve tailwind css ile birlikte ux/ui tasarımına odaklanarak, görsel olarak etkileyici bir deneyim oluşturmayı hedefledim.",
+      github: "https://github.com/hediye-ersan/My-page",
+      website: "https://my-page-rho-ochre.vercel.app/"
     },
     {
       title: "ShopCo Ecommerce",
       image: "/assets/project-2.svg",
-      desc: "Figma üzerinde tasralanan e-ticaret sayfasını, pixel-perfect hassasiyetiyle ve modüler bir mimariyle tasarlamaya çalıştım. Geliştirme sürecinde React Context API kullanarak sepet yönetimi, kullanıcı yetkilendirme ve sipariş geçmişi gibi kritik süreçleri merkezi bir state mekanizmasıyla yönettim. Tasarımın her tarayıcıda tutarlı görünmesi için reset.css standartlarını uygularken, useMediaQuery gibi özel hook’lar ve Tailwind CSS ile cihaz tipine göre uyum sağlayan bir kullanıcı deneyimi kurguladım."
+      desc: "Figma üzerinde tasralanan e-ticaret sayfasını, pixel-perfect hassasiyetiyle ve modüler bir mimariyle tasarlamaya çalıştım. Geliştirme sürecinde React Context API kullanarak sepet yönetimi, kullanıcı yetkilendirme ve sipariş geçmişi gibi kritik süreçleri merkezi bir state mekanizmasıyla yönettim. Tasarımın her tarayıcıda tutarlı görünmesi için reset.css standartlarını uygularken, useMediaQuery gibi özel hook'lar ve Tailwind CSS ile cihaz tipine göre uyum sağlayan bir kullanıcı deneyimi kurguladım.",
+      github: "https://github.com/hediye-ersan/E-commerce",
+      website: "https://e-commerce-drab-six-ds21nudubw.vercel.app/"
     },
     {
       title: "Pizza Order Page",
       image: "/assets/project-4.svg",
-      desc: "Projede ana sayfa, sipariş formu ve başarı onayı aşamalarından oluşan sipariş akışı kurguladım. Sipariş formu içerisinde malzeme seçimi ve hamur kalınlığı gibi form verilerini React state ile yöneterek, verinin sadece doğru validasyonlardan geçtikten sonra siparişe dönüşmesini sağladım. Projede Cypress (E2E) entegrasyonu ve pizza.cy.js test senaryolarıyla, kullanıcı navigasyonunu ve form fonksiyonelliğini otomatikleştirerek geliştirme sağladım.Tasarım tarafını ise özel başlıklar kullanarak Css ile sağladım"
+      desc: "Projede ana sayfa, sipariş formu ve başarı onayı aşamalarından oluşan sipariş akışı kurguladım. Sipariş formu içerisinde malzeme seçimi ve hamur kalınlığı gibi form verilerini React state ile yöneterek, verinin sadece doğru validasyonlardan geçtikten sonra siparişe dönüşmesini sağladım. Projede Cypress (E2E) entegrasyonu ve pizza.cy.js test senaryolarıyla, kullanıcı navigasyonunu ve form fonksiyonelliğini otomatikleştirerek geliştirme sağladım.Tasarım tarafını ise özel başlıklar kullanarak Css ile sağladım",
+      github: "https://github.com/hediye-ersan/My-Pizza-Page",
+      website: "https://pizza-sayfam.vercel.app/"
     },
     
     {
       title: "Full Stack Quiz",
       image: "/assets/project-6.svg",
-      desc: "Full-stack eğitim sürecimde öğrendiğim bilgileri kalıcı hale getirmek ve kişisel bir başvuru kaynağı oluşturmak için bir Quiz uygulaması geliştirdim. Kendi araştırmalarımla hazırladığım 161 soruluk kapsamlı bir JSON veri setini (questions.json) yöneterek; frontend, backend ve veri tabanı konularında öğrenme platformu kurguladım.Bu çalışma, karmaşık teknik bilgileri yapılandırılmış bir veri modeline dönüştürme ve eğitim sürecini dijital bir araca dönüştürme motivasyonumu temsil etmektedir."
+      desc: "Full-stack eğitim sürecimde öğrendiğim bilgileri kalıcı hale getirmek ve kişisel bir başvuru kaynağı oluşturmak için bir Quiz uygulaması geliştirdim. Kendi araştırmalarımla hazırladığım 161 soruluk kapsamlı bir JSON veri setini (questions.json) yöneterek; frontend, backend ve veri tabanı konularında öğrenme platformu kurguladım.Bu çalışma, karmaşık teknik bilgileri yapılandırılmış bir veri modeline dönüştürme ve eğitim sürecini dijital bir araca dönüştürme motivasyonumu temsil etmektedir.",
+      github: "https://github.com/hediye-ersan/Fullstack-Quiz",
+      website: "https://fullstack-quiz-five.vercel.app/"
     }
   ];
 
@@ -89,44 +110,10 @@ export default function MyServices() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 min-h-[500px]">
           <AnimatePresence mode="wait">
             {currentItems.map((service, idx) => (
-              <motion.div
-                key={service.title} // Sayfa değiştiğinde tetiklenmesi için benzersiz key
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -15 }}
-                className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange"
-              >
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-orange transition-colors">
-                    {service.title}
-                  </h3>
-                </div>
-
-                <div className="relative flex-grow bg-black/20 mb-6 aspect-[4/3] overflow-hidden rounded-[1.4rem]">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 bg-black/85 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
-                  >
-                    <p className="text-gray-200 text-[13px] leading-relaxed line-clamp-20">
-                      {service.desc}
-                    </p>
-                  </motion.div>
-                </div>
-
-                <div className="flex justify-end mt-auto">
-                  <button className="relative bg-[#1a1c24] p-5 rounded-full border border-white/10 text-orange hover:bg-orange hover:text-white transition-all duration-300 shadow-xl">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </button>
-                </div>
-              </motion.div>
+              <ProjectCard key={service.title} service={service} idx={idx} />
             ))}
           </AnimatePresence>
         </div>
-
 
         {/* DINAMIK DOTS (NOKTALAR) */}
         <div className="flex justify-center gap-3 mt-20">
@@ -143,5 +130,99 @@ export default function MyServices() {
         </div>
       </div>
     </section>
+  );
+}
+
+interface ProjectCardProps {
+  service: Project;
+  idx: number;
+}
+
+function ProjectCard({ service, idx }: ProjectCardProps) {
+  const [hoveredButton, setHoveredButton] = useState<"github" | "website">("github");
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.5, delay: idx * 0.1 }}
+      whileHover={{ y: -15 }}
+      className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange"
+    >
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-orange transition-colors">
+          {service.title}
+        </h3>
+      </div>
+
+      <div className="relative flex-grow bg-black/20 mb-6 aspect-[4/3] overflow-hidden rounded-[1.4rem]">
+        <img src={service.image} alt={service.title} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          className="absolute inset-0 bg-black/85 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
+        >
+          <p className="text-gray-200 text-[13px] leading-relaxed line-clamp-20">
+            {service.desc}
+          </p>
+        </motion.div>
+      </div>
+
+      {/* GitHub ve Website Butonları - Profile.tsx tarzı */}
+      <div 
+        onMouseLeave={() => setHoveredButton("github")}
+        className="flex items-center bg-white/10 backdrop-blur-xl border border-white/20 p-1.5 rounded-full shadow-lg w-full"
+      >
+        {/* KAYAN TURUNCU ARKA PLAN (INDICATOR) */}
+        <div 
+          className={`absolute h-[calc(100%-12px)] transition-all duration-500 ease-in-out bg-orange rounded-full shadow-lg ${
+            hoveredButton === "github" 
+              ? "left-1.5 w-[52%]" 
+              : "left-[47%] w-[53%]"
+          }`}
+        />
+
+        {/* GitHub Butonu */}
+        <a 
+          href={service.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => setHoveredButton("github")}
+          className={`relative z-10 flex items-center justify-center gap-2 py-3 text-sm font-medium transition-colors duration-300 flex-1 ${
+            hoveredButton === "github" ? "text-white" : "text-white/60"
+          }`}
+        >
+          GitHub
+          <svg 
+            width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+            className={`transition-transform duration-300 ${hoveredButton === "github" ? "translate-x-1 -translate-y-1" : ""}`}
+          >
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+
+        {/* Website Butonu */}
+        <a 
+          href={service.website}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => setHoveredButton("website")}
+          className={`relative z-10 flex items-center justify-center gap-2 py-3 text-sm font-medium transition-colors duration-300 flex-1 ${
+            hoveredButton === "website" ? "text-white" : "text-white/60"
+          }`}
+        >
+          Website
+          <svg 
+            width="16" height="16" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+            className={`transition-all duration-300 ${hoveredButton === "website" ? "translate-x-1 -translate-y-1 opacity-100" : "opacity-0 w-0"}`}
+          >
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </motion.div>
   );
 }

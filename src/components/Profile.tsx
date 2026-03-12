@@ -7,7 +7,7 @@ export default function Profile() {
   const { currentLang } = useLanguage();
 
   return (
-    <section className="relative w-full max-w-7xl mx-auto my-auto  flex flex-col items-center justify-start overflow-hidden pt-9 font-sans">
+    <section className="relative w-full max-w-7xl mx-auto my-auto  flex flex-col items-center justify-start overflow-hidden pt-32 font-sans">
       
       {/* ANA KAPSAYICI */}
       <div className="group relative w-full h-[850px] flex flex-col items-center justify-center">
@@ -86,6 +86,7 @@ export default function Profile() {
             {/* HIRE ME BUTONU */}
             <button 
               onMouseEnter={() => setHoveredButton("hireme")}
+              onClick={() => window.open('https://www.linkedin.com/in/hediye-ersan/', '_blank')}
               className={`relative z-10 flex items-center justify-center gap-3 py-4 md:py-6 text-xl md:text-2xl font-medium transition-colors duration-300 w-1/2 ${
                 hoveredButton === "hireme" ? "text-white" : "text-white/60"
               }`}

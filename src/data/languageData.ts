@@ -238,7 +238,7 @@ export const languageData = {
           company: "WORKINTECH",
           date: "September 2024 - March 2025",
           role: "Full-Stack Bootcamp",
-          desc: "As Full Stack Developer, I completed a bootcamp program that includes 864 hours of classes and more than 75 projects for 6 months to support my career development."
+          desc: "As Full Stack Developer, I completed a bootcamp program that includes 960+ hours of classes and more than 75 projects for 6 months to support my career development."
         }
       ]
     },

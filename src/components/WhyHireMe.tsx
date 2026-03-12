@@ -1,4 +1,7 @@
+import { useLanguage } from "../contexts/LanguageContext";
+
 export default function WhyHireMe() {
+  const { currentLang } = useLanguage();
   return (
     <section id="why" className="pt-[50px] px-24 bg-gray-100">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center">
@@ -27,12 +30,13 @@ export default function WhyHireMe() {
         </div>
 
         <div className="flex-[0.9] w-full max-w-[540px] text-center lg:text-left">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-700">
-            Why <span className="text-orange">Hire me?</span>
-          </h2>
+          <h2
+            className="text-4xl lg:text-5xl font-bold text-gray-700"
+            dangerouslySetInnerHTML={{ __html: currentLang.whyHireMe.title }}
+          ></h2>
 
           <p className="mt-4 text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            With the strong technical foundation I developed during my six-month intensive full-stack training program and my mastery of TypeScript, I am ready to overcome technical challenges. With my disciplined work ethic and emphasis on code quality, I aim to bring fresh energy and a meticulous engineering perspective to your team.
+            {currentLang.whyHireMe.description}
           </p>
 
 

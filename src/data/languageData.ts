@@ -107,7 +107,7 @@ export const languageData = {
 
     // Let's Discuss Section
     letsDiscuss: {
-      title: "Harika bir proje fikriniz mi var?",
+      title: "Full Stack Geliştiriciye mi ihtiyacınız var?",
       subtitle: "Görüşelim",
       emailPlaceholder: "E-posta Adresini Girin",
       sendButton: "Gönder",
@@ -120,15 +120,15 @@ export const languageData = {
 
     // Footer
     footer: {
-      connect: "Orada Bağlantı Kuralım",
+      connect: "Hadi Birlikte Kodlayalım",
       hireMe: "İşe Al",
       brand: {
         name: "HEDİYE ERSAN",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis orci elementum eget."
+        description: "Karmaşık problemleri temiz kod ve şık arayüzlerle çözmeye odaklı bir yazılımcıyım. Her projede yeni bir şeyler öğrenmeyi ve matematik mezunu olmanın getirdiği analitik bakış açısını geliştirdiğim uygulamalara yansıtmayı seviyorum."
       },
       navigation: {
         title: "Navigasyon",
-        links: ["Ana Sayfa", "Hakkımızda", "Hizmet", "Özgeçmiş", "Proje"]
+        links: ["Ana Sayfa", "Proje", "Deneyim", "Yetenekler", "Sertifika"]
       },
       contact: {
         title: "İletişim",
@@ -140,9 +140,9 @@ export const languageData = {
         title: "Son bilgileri alın",
         button: "Gönder"
       },
-      copyright: "Telif Hakkı© {year} Hediye Ersan. Tüm hakları saklıdır.",
-      terms: "Kullanım Şartları & Koşulları",
-      privacy: "Gizlilik Politikası"
+      copyright: "Telif hakkı © 2026 Hediye Ersan. React & TypeScript ile oluşturulmuştur.",
+      terms: "Matematik Mezunu",
+      privacy: "Junior Full Stack Geliştirici"
     }
   },
 
@@ -254,7 +254,7 @@ export const languageData = {
 
     // Let's Discuss Section
     letsDiscuss: {
-      title: "Have an awesome project idea?",
+      title: "Do you need a Full Stack Developer?",
       subtitle: "Let's Discuss",
       emailPlaceholder: "Enter Email Address",
       sendButton: "Send",
@@ -267,15 +267,15 @@ export const languageData = {
 
     // Footer
     footer: {
-      connect: "Lets Connect there",
+      connect: "Let's code together",
       hireMe: "Hire me",
       brand: {
         name: "HEDİYE ERSAN",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue interdum ligula a dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis orci elementum eget."
+        description: "I am a software developer focused on solving complex problems with clean code and elegant interfaces. I enjoy learning new things in every project and reflecting the analytical perspective gained from my mathematics degree in the applications I develop."
       },
       navigation: {
         title: "Navigation",
-        links: ["Home", "About us", "Service", "Resume", "Project"]
+        links: ["Home", "Project", "Experience", "Skill", "Certificate"]
       },
       contact: {
         title: "Contact",
@@ -287,9 +287,9 @@ export const languageData = {
         title: "Get the latest information",
         button: "Send"
       },
-      copyright: "Copyright© {year} Hediye Ersan. All rights reserved.",
-      terms: "User Terms & Conditions",
-      privacy: "Privacy Policy"
+      copyright: "Copyright © 2026 Hediye Ersan. Built with React & TypeScript.",
+      terms: "Mathematics Graduate",
+      privacy: "Junior Full Stack Developer"
     }
   }
 }

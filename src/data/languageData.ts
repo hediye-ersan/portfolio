@@ -23,7 +23,7 @@ export const languageData = {
       quote: "Yazılımda analitik düşünce gücüne ve kullanıcı odaklı tasarıma inanıyorum.",
       stats: {
         hours: "960+",
-        hoursLabel: "Saat Teknik Eğitim"
+        hoursLabel: "SAAT TEKNİK EĞİTİM"
       }
     },
 
@@ -102,7 +102,7 @@ export const languageData = {
     // Why Hire Me Section
     whyHireMe: {
       title: "Neden <span class='text-orange'>işe almalısınız?</span>",
-      description: "Altı aylık yoğun full-stack eğitim programım sırasında geliştirdiğim güçlü teknik temel ve TypeScript ustalığımla teknik zorlukların üstesinden gelmeye hazırım. Disiplinli çalışma etiğim ve kod kalitesine verdiğim önemle, takımınıza taze enerji ve titiz bir mühendislik perspektifi getirmeyi hedefliyorum."
+      description: "Altı aylık <span class='text-orange'>Full Stack Developer</span> eğitim programında edindiğim sağlam teknik altyapım ile teknik zorlukların üstesinden gelmeye hazırım. Disiplinli çalışma ahlakım ve kod kalitesine verdiğim önemle, ekibinize yeni bir enerji ve titiz bir mühendislik bakış açısı getirmeyi hedefliyorum."
     },
 
     // Let's Discuss Section
@@ -137,7 +137,7 @@ export const languageData = {
         email: "E-posta"
       },
       subscribe: {
-        title: "Son bilgileri alın",
+        title: "Daha detaylı bilgi için",
         button: "Gönder"
       },
       copyright: "Telif hakkı © 2026 Hediye Ersan. React & TypeScript ile oluşturulmuştur.",
@@ -293,7 +293,7 @@ export const languageData = {
     // Why Hire Me Section
     whyHireMe: {
       title: "Why <span class='text-orange'>Hire me?</span>",
-      description: "With the strong technical foundation I developed during my six-month intensive full-stack training program and my mastery of TypeScript, I am ready to overcome technical challenges. With my disciplined work ethic and emphasis on code quality, I aim to bring fresh energy and a meticulous engineering perspective to your team."
+      description: "With the solid technical foundation I gained during my six-month intensive full-stack training program, I am ready to tackle technical challenges. With my disciplined work ethic and commitment to code quality, I aim to bring new energy and a meticulous engineering perspective to your team."
     },
 
     // Let's Discuss Section
@@ -328,7 +328,7 @@ export const languageData = {
         email: "Email"
       },
       subscribe: {
-        title: "Get the latest information",
+        title: "For more detailed information",
         button: "Send"
       },
       copyright: "Copyright © 2026 Hediye Ersan. Built with React & TypeScript.",

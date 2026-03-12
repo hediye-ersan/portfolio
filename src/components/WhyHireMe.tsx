@@ -35,9 +35,10 @@ export default function WhyHireMe() {
             dangerouslySetInnerHTML={{ __html: currentLang.whyHireMe.title }}
           ></h2>
 
-          <p className="mt-4 text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            {currentLang.whyHireMe.description}
-          </p>
+          <p 
+            className="mt-4 text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0"
+            dangerouslySetInnerHTML={{ __html: currentLang.whyHireMe.description }}
+          ></p>
 
 
           <div className="mt-12 grid grid-cols-6 grid-rows-2 gap-4 justify-items-center w-full max-w-[560px] mx-auto lg:mx-0">

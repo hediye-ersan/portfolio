@@ -6,25 +6,43 @@ export default function Navbar() {
   const [active, setActive] = useState(0)
   const { currentLang, setLanguage, language } = useLanguage()
 
+  const scrollToSection = (index: number) => {
+    setActive(index)
+    
+    const sectionIds = ['home', 'projects', 'experience', 'skills', 'certificate', 'contact']
+    const targetId = sectionIds[index]
+    
+    if (index === 0) {
+      // Home - scroll to very top of page
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      // Other sections - scroll to element
+      const element = document.getElementById(targetId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }
+
   return (
     <>
-      <nav className="w-full flex justify-center mt-9 max-w-7xl mx-auto">
-      <div className="h-[80px] bg-black rounded-full p-[10px] flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 w-full flex justify-center mt-9 max-w-full px-4 z-50">
+        <div className="bg-black/95 backdrop-blur-sm rounded-full p-[10px] flex items-center justify-between w-full">
         {/* LEFT */}
         <div className="flex items-center gap-4">
           {currentLang.nav.links.slice(0, 3).map((item, index) =>
             active === index ? (
-              <OrangeButton key={item} onClick={() => setActive(index)} className="px-10 py-5 text-xl whitespace-nowrap">
+              <OrangeButton key={item} onClick={() => scrollToSection(index)} className="px-8 py-5 text-xl whitespace-nowrap">
                 {item}
               </OrangeButton>
             ) : (
-              <NavButton key={item} label={item} onClick={() => setActive(index)} />
+              <NavButton key={item} label={item} onClick={() => scrollToSection(index)} />
             )
           )}
         </div>
 
         {/* CENTER LOGO */}
-        <div className="group flex items-center justify-center px-16 relative flex-none">
+        <div className="group flex items-center justify-center px-4 relative flex-none">
           <div className="transition-transform duration-300 group-hover:-translate-x-2">
             <div className="logo-circle w-[46px] h-[46px] bg-orange rounded-full flex items-center justify-center text-white font-semibold text-2xl">
               HE
@@ -45,16 +63,16 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {currentLang.nav.links.slice(3).map((item, index) =>
             active === index + 3 ? (
-              <OrangeButton key={item} onClick={() => setActive(index + 3)} className="px-10 py-5 text-xl whitespace-nowrap">
+              <OrangeButton key={item} onClick={() => scrollToSection(index + 3)} className="px-8 py-5 text-xl whitespace-nowrap">
                 {item}
               </OrangeButton>
             ) : (
-              <NavButton key={item} label={item} onClick={() => setActive(index + 3)} />
+              <NavButton key={item} label={item} onClick={() => scrollToSection(index + 3)} />
             )
           )}
         </div>
-      </div>
-    </nav>
+        </div>
+      </nav>
       {/* LANGUAGE TOGGLE - Below navbar */}
       <div className="flex justify-center pb-9 pt-2">
         <LanguageToggleButton language={language} setLanguage={setLanguage} />
@@ -77,7 +95,7 @@ function NavButton({ label, onClick }: NavButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="px-10 py-5 text-xl font-semibold rounded-full text-white hover:text-white hover:bg-white/10 transition-all duration-300 whitespace-nowrap"
+      className="px-8 py-5 text-xl font-semibold rounded-full text-white hover:text-white hover:bg-white/10 transition-all duration-300 whitespace-nowrap"
     >
       {label}
     </button>

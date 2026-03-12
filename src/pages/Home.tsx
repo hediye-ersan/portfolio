@@ -10,14 +10,26 @@ import Footer from '../components/Footer'
 export default function Home() {
   return (
     <div>
-      <Profile />
-      <MyServices />
-      <Experiences />
-      <WhyHireMe />
-      <MyProjects />
+      <div id="home">
+        <Profile />
+      </div>
+      <div id="projects">
+        <MyServices />
+      </div>
+      <div id="experience">
+        <Experiences />
+      </div>
+      <div id="skills">
+        <WhyHireMe />
+      </div>
+      <div id="certificate">
+        <MyProjects />
+      </div>
       <LetDiscuss />
       <InfiniteMarquee />
-      <Footer />
+      <div id="contact">
+        <Footer />
+      </div>
     </div>
   )
 }

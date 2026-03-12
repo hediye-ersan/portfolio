@@ -86,7 +86,8 @@ export default function Footer() {
               />
               <button
                 type="button"
-                className="px-4 bg-orange text-white text-sm font-semibold flex items-center justify-center"
+                onClick={() => window.location.href = 'mailto:hediyesnl9@gmail.com?subject=Let\'s%20work%20together'}
+                className="px-4 bg-orange text-white text-sm font-semibold flex items-center justify-center hover:bg-orange/90 transition-colors"
                 aria-label="Send"
               >
                 <FiArrowRight className="w-4 h-4" />

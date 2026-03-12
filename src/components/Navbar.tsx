@@ -16,17 +16,24 @@ export default function Navbar() {
       // Home - scroll to very top of page
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
-      // Other sections - scroll to element
+      // Other sections - scroll to element with offset for fixed navbar
       const element = document.getElementById(targetId)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const navbarHeight = 120 // Navbar height + margin
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - navbarHeight
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
       }
     }
   }
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 w-full flex justify-center mt-9 max-w-full px-4 z-50">
+      <nav className="fixed top-0 left-0 right-0 w-full flex justify-center mt-9 items-center max-w-7xl z-50 mx-auto">
         <div className="bg-black/95 backdrop-blur-sm rounded-full p-[10px] flex items-center justify-between w-full">
         {/* LEFT */}
         <div className="flex items-center gap-4">
@@ -42,7 +49,7 @@ export default function Navbar() {
         </div>
 
         {/* CENTER LOGO */}
-        <div className="group flex items-center justify-center px-4 relative flex-none">
+        <div className="group flex items-center justify-center relative flex-none">
           <div className="transition-transform duration-300 group-hover:-translate-x-2">
             <div className="logo-circle w-[46px] h-[46px] bg-orange rounded-full flex items-center justify-center text-white font-semibold text-2xl">
               HE

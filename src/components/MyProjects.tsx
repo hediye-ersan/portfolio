@@ -3,12 +3,7 @@ import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from "react-icons/fi"
 import { motion } from "framer-motion"
 import { useLanguage } from "../contexts/LanguageContext"
 
-type Certificate = {
-  title: string
-  subtitle: string
-  image: string
-  tags: string[]
-}
+
 
 export default function MyProjects() {
   const { currentLang } = useLanguage();

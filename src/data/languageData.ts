@@ -77,7 +77,7 @@ export const languageData = {
       experiences: [
         {
           company: "JUNIORS CENTER",
-          date: "Ekim 2025 - Günümüz",
+          date: "Ekim 2025 - Devam ediyor",
           role: "Frontend Geliştirici",
           desc: "UI/UX ekibi tarafından tasarlanan arayüzleri TypeScript (TSX), React ve Tailwind CSS kullanarak kodluyorum. Kullanıcı deneyimini koruyarak sayfalar geliştiriyorum. Takım içinde Git ile işbirliği yapıyor, kod inceleme ve geliştirme süreçlerine aktif olarak katılıyorum."
         },

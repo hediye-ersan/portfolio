@@ -1,28 +1,5 @@
 import { useLanguage } from "../contexts/LanguageContext";
 
-const experiences = [
-  {
-    company: "JUNIORS CENTER",
-    date: "October 2025 - Present",
-    role: "Frontend Developer",
-    desc: "I encodes interfaces designed by the UI/UX team using TypeScript (TSX), React and Tailwind CSS. I develop pages by maintaining the user experience. I'm collaborating with Git within the team, actively participating in code review and development processes.",
-    isOrange: true
-  },
-  {
-    company: "SCA SOCIAL",
-    date: "August 2025- November 2025",
-    role: "Project Management Intern",
-    desc: "I received training in Information Law, Management and Organization, Artificial Intelligence and Data Science, Project Management and developed projects within each course.",
-    isOrange: false
-  },
-  {
-    company: "WORKINTECH",
-    date: "September 2024 - March 2025",
-    role: "Full-Stack Bootcamp",
-    desc: "As Full Stack Developer, I completed a bootcamp program that includes 864 hours of classes and more than 75 projects for 6 months to support my career development.",
-    isOrange: true
-  }
-];
 
 export default function Experiences() {
   const { currentLang } = useLanguage();

@@ -29,8 +29,8 @@ export default function MyServices() {
     image: projectImages[index] || "/assets/project-1.svg"
   }));
 
-  // Projeleri 3'erli gruplara ayırıyoruz
-  const itemsPerPage = 3;
+  // Projeleri 2'şerli gruplara ayırıyoruz
+  const itemsPerPage = 2;
   const totalPages = Math.ceil(services.length / itemsPerPage);
   const currentItems = services.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
 
@@ -63,7 +63,7 @@ export default function MyServices() {
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-8">
+      <div className="relative max-w-7xl z-10 container mx-auto">
         {/* BAŞLIK KISMI */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
           <div className="space-y-4">
@@ -78,7 +78,7 @@ export default function MyServices() {
         </div>
 
         {/* PROJE KARTLARI - ANIMASYONLU GEÇİŞ */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 min-h-[500px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 min-h-[500px]">
           <AnimatePresence mode="wait">
             {currentItems.map((service, idx) => (
               <ProjectCard key={service.title} service={service} idx={idx} currentPage={currentPage} />
@@ -140,7 +140,7 @@ function ProjectCard({ service, idx, currentPage }: ProjectCardProps) {
           whileHover={{ opacity: 1 }}
           className="absolute inset-0 bg-black/85 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
         >
-          <p className="text-gray-200 text-[13px] leading-relaxed line-clamp-20">
+          <p className="text-gray-200 text-sm leading-relaxed line-clamp-20">
             {service.desc}
           </p>
         </motion.div>

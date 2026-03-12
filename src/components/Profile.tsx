@@ -86,7 +86,7 @@ export default function Profile() {
             {/* HIRE ME BUTONU */}
             <button 
               onMouseEnter={() => setHoveredButton("hireme")}
-              onClick={() => window.open('https://www.linkedin.com/in/hediye-ersan/', '_blank')}
+              onClick={() => window.open('https://www.linkedin.com/in/hediye-ersan-b2799325a/', '_blank')}
               className={`relative z-10 flex items-center justify-center gap-3 py-4 md:py-6 text-xl md:text-2xl font-medium transition-colors duration-300 w-1/2 ${
                 hoveredButton === "hireme" ? "text-white" : "text-white/60"
               }`}

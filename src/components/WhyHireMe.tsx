@@ -3,11 +3,11 @@ import { useLanguage } from "../contexts/LanguageContext";
 export default function WhyHireMe() {
   const { currentLang } = useLanguage();
   return (
-    <section id="why" className="pt-[50px] px-24 bg-gray-100">
+    <section id="why" className="pt-[50px] bg-gray-100">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center">
         <div className="group relative flex-[1.05] w-full max-w-[680px] min-w-[420px] overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
-            {[1.04, 1.16].map((scale, i, arr) => (
+            {[1.04, 1.16].map((scale, i) => (
               <img
                 key={scale}
                 src="/assets/circles.svg"

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import type { JSX } from "react"
 import { motion } from "framer-motion"
-import {FiAward, FiCode, FiStar, FiMousePointer } from "react-icons/fi"
+import { FiAward, FiCode, FiStar, FiMousePointer } from "react-icons/fi"
+import { useLanguage } from "../contexts/LanguageContext"
 
 const accent = "#ff8a00"
 
 export default function LetDiscuss() {
+  const { currentLang } = useLanguage();
   const email = "hediyesnl9@gmail.com"
   const [typed, setTyped] = useState("")
   const [phase, setPhase] = useState<"typing" | "button" | "press" | "idle">("button")
@@ -45,10 +47,10 @@ export default function LetDiscuss() {
       <div className="w-full max-w-7xl text-center space-y-8">
         <div className="space-y-3 md:space-y-4">
           <p className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
-            Have an awesome project idea?
+            {currentLang.letsDiscuss.title}
           </p>
           <p className="text-5xl font-extrabold" style={{ color: accent }}>
-            Let&apos;s Discuss
+            {currentLang.letsDiscuss.subtitle}
           </p>
         </div>
 
@@ -59,7 +61,7 @@ export default function LetDiscuss() {
             </span>
 
             <div className="flex-1 relative">
-              <div className="text-base md:text-lg text-gray-700">{typed || "Enter Email Address"}</div>
+              <div className="text-base md:text-lg text-gray-700">{typed || currentLang.letsDiscuss.emailPlaceholder}</div>
               <div className="absolute left-0 top-1/2 -translate-y-1/2 text-base md:text-lg text-gray-700 opacity-0 select-none">
                 {email}
               </div>
@@ -76,7 +78,7 @@ export default function LetDiscuss() {
               onClick={() => (window.location.href = `mailto:${email}?subject=Merhaba%20Hediye`)}
               style={{ boxShadow: "0 10px 25px -18px rgba(0,0,0,0.4)" }}
             >
-              Send
+              {currentLang.letsDiscuss.sendButton}
             </motion.button>
           </div>
 
@@ -93,11 +95,11 @@ export default function LetDiscuss() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-slate-700 text-base md:text-lg">
-          <SocialStat icon={() => <FiAward className="w-5 h-5 text-orange-500" />} label="Sakarya Univ. Mathematics Graduate" />
+          <SocialStat icon={() => <FiAward className="w-5 h-5 text-orange-500" />} label={currentLang.letsDiscuss.stats.education} />
           <Divider />
-          <SocialStat icon={() => <FiCode className="w-5 h-5 text-orange-500" />} label="Full-Stack Web Developer" />
+          <SocialStat icon={() => <FiCode className="w-5 h-5 text-orange-500" />} label={currentLang.letsDiscuss.stats.role} />
           <Divider />
-          <SocialStat icon={() => <FiStar className="w-5 h-5 text-orange-500" />} label="UI/UX & Modern Design" />
+          <SocialStat icon={() => <FiStar className="w-5 h-5 text-orange-500" />} label={currentLang.letsDiscuss.stats.design} />
         </div>
       </div>
     </section>

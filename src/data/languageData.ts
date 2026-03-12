@@ -4,7 +4,7 @@ export const languageData = {
     nav: {
       links: ["Ana Sayfa", "Projeler", "Deneyimler", "Yetenekler", "Sertifikalar", "İletişim"],
       logo: {
-        name: "Hediye",
+        name: "Hediye Ersan",
         title: "Junior",
         subtitle: "Web Geliştirici"
       },
@@ -151,7 +151,7 @@ export const languageData = {
     nav: {
       links: ["Home", "Project", "Experience", "Skills", "Certificate", "Contact"],
       logo: {
-        name: "Hediye",
+        name: "Hediye Ersan",
         title: "Junior",
         subtitle: "Web Developer"
       },

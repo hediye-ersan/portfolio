@@ -1,11 +1,10 @@
 import { useState } from "react"
 import OrangeButton from "./ui/OrangeButton"
-
-const links = ["Home", "Project", "Experience", "Skills", "Certificate", "Contact"]
+import { useLanguage } from "../contexts/LanguageContext"
 
 export default function Navbar() {
-  const [active, setActive] = useState("Home")
-  const [language, setLanguage] = useState<"TR" | "EN">("TR")
+  const [active, setActive] = useState(0)
+  const { currentLang, setLanguage, language } = useLanguage()
 
   return (
     <>
@@ -13,44 +12,44 @@ export default function Navbar() {
       <div className="h-[80px] bg-black rounded-full p-[10px] flex items-center justify-between">
         {/* LEFT */}
         <div className="flex items-center gap-4">
-          {links.slice(0, 3).map((item) =>
-            active === item ? (
-              <OrangeButton key={item} onClick={() => setActive(item)} className="px-10 py-5 text-xl">
+          {currentLang.nav.links.slice(0, 3).map((item, index) =>
+            active === index ? (
+              <OrangeButton key={item} onClick={() => setActive(index)} className="px-10 py-5 text-xl whitespace-nowrap">
                 {item}
               </OrangeButton>
             ) : (
-              <NavButton key={item} label={item} onClick={() => setActive(item)} />
+              <NavButton key={item} label={item} onClick={() => setActive(index)} />
             )
           )}
         </div>
 
         {/* CENTER LOGO */}
-        <div className="group flex items-center gap-3 px-14 relative flex-none">
+        <div className="group flex items-center justify-center px-16 relative flex-none">
           <div className="transition-transform duration-300 group-hover:-translate-x-2">
             <div className="logo-circle w-[46px] h-[46px] bg-orange rounded-full flex items-center justify-center text-white font-semibold text-2xl">
               HE
             </div>
           </div>
-        <div className="relative overflow-hidden h-[44px] w-[140px] flex items-center">
-            <span className="text-xl text-white font-semibold transition-opacity duration-300 group-hover:opacity-0">
-              Hediye
+        <div className="relative overflow-hidden h-[44px] w-[140px] flex items-center justify-center">
+            <span className="text-xl text-white font-semibold transition-opacity duration-300 group-hover:opacity-0 text-center">
+              {currentLang.nav.logo.name}
             </span>
-            <div className="absolute inset-0 flex flex-col justify-center leading-tight opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span className="text-xs text-gray-200">Junior</span>
-              <span className="text-lg text-white font-semibold">Web Developer</span>
+            <div className="absolute inset-0 flex flex-col justify-center items-center leading-tight opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="text-xs text-gray-200 text-center">{currentLang.nav.logo.title}</span>
+              <span className="text-lg text-white font-semibold text-center">{currentLang.nav.logo.subtitle}</span>
             </div>
           </div>
         </div>
 
         {/* RIGHT */}
         <div className="flex items-center gap-4">
-          {links.slice(3).map((item) =>
-            active === item ? (
-              <OrangeButton key={item} onClick={() => setActive(item)} className="px-10 py-5 text-xl">
+          {currentLang.nav.links.slice(3).map((item, index) =>
+            active === index + 3 ? (
+              <OrangeButton key={item} onClick={() => setActive(index + 3)} className="px-10 py-5 text-xl whitespace-nowrap">
                 {item}
               </OrangeButton>
             ) : (
-              <NavButton key={item} label={item} onClick={() => setActive(item)} />
+              <NavButton key={item} label={item} onClick={() => setActive(index + 3)} />
             )
           )}
         </div>
@@ -78,7 +77,7 @@ function NavButton({ label, onClick }: NavButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="px-10 py-5 text-xl font-semibold rounded-full text-white hover:text-white hover:bg-white/10 transition-all duration-300"
+      className="px-10 py-5 text-xl font-semibold rounded-full text-white hover:text-white hover:bg-white/10 transition-all duration-300 whitespace-nowrap"
     >
       {label}
     </button>
@@ -86,6 +85,7 @@ function NavButton({ label, onClick }: NavButtonProps) {
 }
 
 function LanguageToggleButton({ language, setLanguage }: LanguageToggleButtonProps) {
+  const { currentLang } = useLanguage()
   const toggleLanguage = () => {
     setLanguage(language === "TR" ? "EN" : "TR")
   }
@@ -96,13 +96,9 @@ function LanguageToggleButton({ language, setLanguage }: LanguageToggleButtonPro
       className="text-lg font-medium hover:text-orange transition-colors duration-300"
     >
       {language === "TR" ? (
-        <>
-          <span className="text-orange">Türkçe</span>ye Geç
-        </>
+        <span dangerouslySetInnerHTML={{ __html: currentLang.nav.languageToggle.switchToEnglish }} />
       ) : (
-        <>
-          Switch to <span className="text-orange">English</span>
-        </>
+        <span dangerouslySetInnerHTML={{ __html: currentLang.nav.languageToggle.switchToTurkish }} />
       )}
     </button>
   )

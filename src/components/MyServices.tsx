@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface Project {
   title: string;
@@ -11,52 +12,22 @@ interface Project {
 
 export default function MyServices() {
   const [currentPage, setCurrentPage] = useState(0);
+  const { currentLang } = useLanguage();
   
-  const services = [
-    {
-      title: "JobCraft Cv Builder",
-      image: "/assets/project-3.svg",
-      desc: "Ekipçe geliştirdiğimiz cv hazırlama web uygulamasında ilk kez TypeScript yazarak temelimi oluşturdum ve takım çalışması deneyimi kazandım. Çok sayfalı akışları yönetmek için Redux Toolkit kullandık; CV adımlarını form yapısıyla kurup kullanıcı verisini Redux'ta tutarak canlı önizleme sağladım. İçerik yüksekliğini ölçen özel bir hook ile ikinci sayfaya otomatik geçişi çözdüm. Backend API'lerini Insomnia ile doğrulayıp entegre ettim. Yayına hazırlanan projede frontend geliştirici olarak aktif rol alıyorum.",
-      github: "https://github.com/hediyeer/JOBCRAFT-CV-BUILDER",
-      website: "https://jobcraft-b23fc.web.app/"
-    },
-    {
-      title: "TrendKod",
-      image: "/assets/project-1.svg",
-      desc: "Geliştirme sürecine Postman ile API testlerini yaparak başladım; veri yapılarını önceden doğrulayıp hatasız bir entegrasyon sağladım.Projede Redux Store kullanarak; alışveriş sepeti, kullanıcı oturumu ve ürün filtreleme gibi karmaşık süreçleri tek bir noktadan yönettim.Redux Thunk ile asenkron API süreçlerini yönettim. Hazırladığım dinamik filtreleme sistemi sayesinde kullanıcıların kategorilere ve ürün özelliklerine göre gerçek zamanlı sonuçlar almasını sağlayan hızlı bir altyapı oluşturdum.",
-      github: "https://github.com/hediye-ersan/Trend-Kod",
-      website: "https://trend-kod.vercel.app/"
-    },
-    {
-      title: "Portfolio Website",
-      image: "/assets/project-5.svg",
-      desc: "Kariyer yolculuğumun ilk portfolyo projesinde, modern web standartlarını ve merkezi state yönetimi prensiplerini uyguladım. LanguageContext.jsx üzerinden kurguladığım yapı sayesinde, myData.js içindeki Türkçe ve İngilizce veri setlerini tüm uygulamaya dinamik olarak dağıtan bir çoklu dil sistemi geliştirdim. DarkModeToggle.jsx ile tema yönetimi mekanizmalarını entegre ettim. Ayrıca animasyonlar ve tailwind css ile birlikte ux/ui tasarımına odaklanarak, görsel olarak etkileyici bir deneyim oluşturmayı hedefledim.",
-      github: "https://github.com/hediye-ersan/My-page",
-      website: "https://my-page-rho-ochre.vercel.app/"
-    },
-    {
-      title: "ShopCo Ecommerce",
-      image: "/assets/project-2.svg",
-      desc: "Figma üzerinde tasralanan e-ticaret sayfasını, pixel-perfect hassasiyetiyle ve modüler bir mimariyle tasarlamaya çalıştım. Geliştirme sürecinde React Context API kullanarak sepet yönetimi, kullanıcı yetkilendirme ve sipariş geçmişi gibi kritik süreçleri merkezi bir state mekanizmasıyla yönettim. Tasarımın her tarayıcıda tutarlı görünmesi için reset.css standartlarını uygularken, useMediaQuery gibi özel hook'lar ve Tailwind CSS ile cihaz tipine göre uyum sağlayan bir kullanıcı deneyimi kurguladım.",
-      github: "https://github.com/hediye-ersan/E-commerce",
-      website: "https://e-commerce-drab-six-ds21nudubw.vercel.app/"
-    },
-    {
-      title: "Pizza Order Page",
-      image: "/assets/project-4.svg",
-      desc: "Projede ana sayfa, sipariş formu ve başarı onayı aşamalarından oluşan sipariş akışı kurguladım. Sipariş formu içerisinde malzeme seçimi ve hamur kalınlığı gibi form verilerini React state ile yöneterek, verinin sadece doğru validasyonlardan geçtikten sonra siparişe dönüşmesini sağladım. Projede Cypress (E2E) entegrasyonu ve pizza.cy.js test senaryolarıyla, kullanıcı navigasyonunu ve form fonksiyonelliğini otomatikleştirerek geliştirme sağladım.Tasarım tarafını ise özel başlıklar kullanarak Css ile sağladım",
-      github: "https://github.com/hediye-ersan/My-Pizza-Page",
-      website: "https://pizza-sayfam.vercel.app/"
-    },
-    
-    {
-      title: "Full Stack Quiz",
-      image: "/assets/project-6.svg",
-      desc: "Full-stack eğitim sürecimde öğrendiğim bilgileri kalıcı hale getirmek ve kişisel bir başvuru kaynağı oluşturmak için bir Quiz uygulaması geliştirdim. Kendi araştırmalarımla hazırladığım 161 soruluk kapsamlı bir JSON veri setini (questions.json) yöneterek; frontend, backend ve veri tabanı konularında öğrenme platformu kurguladım.Bu çalışma, karmaşık teknik bilgileri yapılandırılmış bir veri modeline dönüştürme ve eğitim sürecini dijital bir araca dönüştürme motivasyonumu temsil etmektedir.",
-      github: "https://github.com/hediye-ersan/Fullstack-Quiz",
-      website: "https://fullstack-quiz-five.vercel.app/"
-    }
+  // Project images mapping
+  const projectImages = [
+    "/assets/project-3.svg",
+    "/assets/project-1.svg", 
+    "/assets/project-5.svg",
+    "/assets/project-2.svg",
+    "/assets/project-4.svg",
+    "/assets/project-6.svg"
   ];
+  
+  const services = currentLang.projects.projects.map((project, index) => ({
+    ...project,
+    image: projectImages[index] || "/assets/project-1.svg"
+  }));
 
   // Projeleri 3'erli gruplara ayırıyoruz
   const itemsPerPage = 3;
@@ -97,12 +68,12 @@ export default function MyServices() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
           <div className="space-y-4">
             <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
-              My <span className="text-orange">Projects</span>
+              {currentLang.projects.title}
             </h2>
             <div className="h-1.5 w-32 bg-orange rounded-full"></div>
           </div>
           <p className="text-gray-400 max-w-sm text-lg leading-relaxed">
-            Matematiksel kesinlik ve modern teknolojileri birleştirerek uçtan uca dijital çözümler üretiyorum.
+            {currentLang.projects.subtitle}
           </p>
         </div>
 

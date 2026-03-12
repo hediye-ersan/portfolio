@@ -85,13 +85,13 @@ export const languageData = {
           company: "SCA SOCIAL",
           date: "Ağustos 2025 - Kasım 2025",
           role: "Proje Yönetimi Stajyeri",
-          desc: "Bilgi Hukuku, Yönetim ve Organizasyon, Yapay Zeka ve Veri Bilimi, Proje Yönetimi alanlarında eğitim aldım ve her kurs içinde projeler geliştirdim."
+          desc: "Bilişim Hukuku, Yönetim ve Organizasyon, Yapay Zeka ve Veri Bilimi, Proje Yönetimi alanlarında eğitim aldım ve her kurs içinde projeler geliştirdim."
         },
         {
           company: "WORKINTECH",
           date: "Eylül 2024 - Mart 2025",
           role: "Full-Stack Bootcamp",
-          desc: "Full Stack Geliştirici olarak, kariyer gelişimimi desteklemek için 6 ay boyunca 864 saat ders ve 75'ten fazla proje içeren bir bootcamp programını tamamladım."
+          desc: "Full Stack Geliştirici olarak, kariyer gelişimimi desteklemek için 6 ay boyunca 960+ saat ders ve 75'ten fazla proje içeren bir bootcamp programını tamamladım."
         }
       ]
     },

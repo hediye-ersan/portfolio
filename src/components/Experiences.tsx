@@ -1,4 +1,4 @@
-
+import { useLanguage } from "../contexts/LanguageContext";
 
 const experiences = [
   {
@@ -25,14 +25,16 @@ const experiences = [
 ];
 
 export default function Experiences() {
+  const { currentLang } = useLanguage();
+  const experiences = currentLang.experience.experiences;
+
   return (
     <section className="w-full py-24 bg-white font-sans">
       <div className="container mx-auto px-4">
         
         {/* BAŞLIK: My (Lacivert/Antrasit) Work Experince (Turuncu) */}
         <h2 className="text-center text-5xl md:text-6xl font-bold mb-32">
-          <span className="text-[#2D3E50]">My</span>{" "}
-          <span className="text-[#FF8A00]">Experinces</span>
+          {currentLang.experience.title}
         </h2>
 
         <div className="relative max-w-6xl mx-auto">
@@ -59,7 +61,7 @@ export default function Experiences() {
                     {/* Dıştaki Kesikli Çizgi Halkası */}
                     <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#2D3E50]"></div>
                     {/* İçteki Renkli Nokta */}
-                    <div className={`w-8 h-8 rounded-full ${exp.isOrange ? 'bg-[#FF8A00]' : 'bg-[#2D3E50]'}`}></div>
+                    <div className={`w-8 h-8 rounded-full ${idx === 0 || idx === 2 ? 'bg-[#FF8A00]' : 'bg-[#2D3E50]'}`}></div>
                   </div>
                 </div>
 

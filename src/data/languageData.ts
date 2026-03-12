@@ -35,38 +35,38 @@ export const languageData = {
         {
           title: "JobCraft Cv Builder",
           desc: "Ekipçe geliştirdiğimiz cv hazırlama web uygulamasında ilk kez TypeScript yazarak temelimi oluşturdum ve takım çalışması deneyimi kazandım. Çok sayfalı akışları yönetmek için Redux Toolkit kullandık; CV adımlarını form yapısıyla kurup kullanıcı verisini Redux'ta tutarak canlı önizleme sağladım. İçerik yüksekliğini ölçen özel bir hook ile ikinci sayfaya otomatik geçişi çözdüm. Backend API'lerini Insomnia ile doğrulayıp entegre ettim. Yayına hazırlanan projede frontend geliştirici olarak aktif rol alıyorum.",
-          github: "GitHub",
-          website: "Web Sitesi"
+          github: "#",
+          website: "https://jobcraft-b23fc.web.app/"
         },
         {
           title: "TrendKod",
           desc: "Geliştirme sürecine Postman ile API testlerini yaparak başladım; veri yapılarını önceden doğrulayıp hatasız bir entegrasyon sağladım.Projede Redux Store kullanarak; alışveriş sepeti, kullanıcı oturumu ve ürün filtreleme gibi karmaşık süreçleri tek bir noktadan yönettim.Redux Thunk ile asenkron API süreçlerini yönettim. Hazırladığım dinamik filtreleme sistemi sayesinde kullanıcıların kategorilere ve ürün özelliklerine göre gerçek zamanlı sonuçlar almasını sağlayan hızlı bir altyapı oluşturdum.",
-          github: "GitHub",
-          website: "Web Sitesi"
+          github: "https://github.com/hediye-ersan/Trend-Kod",
+          website: "https://trend-kod.vercel.app/"
         },
         {
           title: "Portfolyo Web Sitesi",
           desc: "Kariyer yolculuğumun ilk portfolyo projesinde, modern web standartlarını ve merkezi state yönetimi prensiplerini uyguladım. LanguageContext.jsx üzerinden kurguladığım yapı sayesinde, myData.js içindeki Türkçe ve İngilizce veri setlerini tüm uygulamaya dinamik olarak dağıtan bir çoklu dil sistemi geliştirdim. DarkModeToggle.jsx ile tema yönetimi mekanizmalarını entegre ettim. Ayrıca animasyonlar ve tailwind css ile birlikte ux/ui tasarımına odaklanarak, görsel olarak etkileyici bir deneyim oluşturmayı hedefledim.",
-          github: "GitHub",
-          website: "Web Sitesi"
+          github: "https://github.com/hediye-ersan/My-page",
+          website: "https://my-page-rho-ochre.vercel.app/"
         },
         {
           title: "ShopCo E-ticaret",
           desc: "Figma üzerinde tasarlanan e-ticaret sayfasını, pixel-perfect hassasiyetiyle ve modüler bir mimariyle tasarlamaya çalıştım. Geliştirme sürecinde React Context API kullanarak sepet yönetimi, kullanıcı yetkilendirme ve sipariş geçmişi gibi kritik süreçleri merkezi bir state mekanizmasıyla yönettim. Tasarımın her tarayıcıda tutarlı görünmesi için reset.css standartlarını uygularken, useMediaQuery gibi özel hook'lar ve Tailwind CSS ile cihaz tipine göre uyum sağlayan bir kullanıcı deneyimi kurguladım.",
-          github: "GitHub",
-          website: "Web Sitesi"
+          github: "https://github.com/hediye-ersan/E-commerce",
+          website: "https://e-commerce-drab-six-ds21nudubw.vercel.app/"
         },
         {
           title: "Pizza Sipariş Sayfası",
           desc: "Projede ana sayfa, sipariş formu ve başarı onayı aşamalarından oluşan sipariş akışı kurguladım. Sipariş formu içerisinde malzeme seçimi ve hamur kalınlığı gibi form verilerini React state ile yöneterek, verinin sadece doğru validasyonlardan geçtikten sonra siparişe dönüşmesini sağladım. Projede Cypress (E2E) entegrasyonu ve pizza.cy.js test senaryolarıyla, kullanıcı navigasyonunu ve form fonksiyonelliğini otomatikleştirerek geliştirme sağladım.Tasarım tarafını ise özel başlıklar kullanarak Css ile sağladım",
-          github: "GitHub",
-          website: "Web Sitesi"
+          github: "https://github.com/hediye-ersan/My-Pizza-Page",
+          website: "https://pizza-sayfam.vercel.app/"
         },
         {
           title: "Full Stack Quiz",
           desc: "Full-stack eğitim sürecimde öğrendiğim bilgileri kalıcı hale getirmek ve kişisel bir başvuru kaynağı oluşturmak için bir Quiz uygulaması geliştirdim. Kendi araştırmalarımla hazırladığım 161 soruluk kapsamlı bir JSON veri setini (questions.json) yöneterek; frontend, backend ve veri tabanı konularında öğrenme platformu kurguladım.Bu çalışma, karmaşık teknik bilgileri yapılandırılmış bir veri modeline dönüştürme ve eğitim sürecini dijital bir araca dönüştürme motivasyonumu temsil etmektedir.",
-          github: "GitHub",
-          website: "Web Sitesi"
+          github: "https://github.com/hediye-ersan/Fullstack-Quiz",
+          website: "https://fullstack-quiz-five.vercel.app/"
         }
       ]
     },
@@ -182,38 +182,38 @@ export const languageData = {
         {
           title: "JobCraft Cv Builder",
           desc: "In the CV preparation web application we developed as a team, I built my foundation by writing TypeScript for the first time and gained teamwork experience. We used Redux Toolkit to manage multi-page flows; I set up CV steps as a form structure and provided live preview by keeping user data in Redux. I solved automatic page transition with a custom hook that measures content height. I verified and integrated Backend APIs with Insomnia. I'm actively involved as a frontend developer in the project being prepared for release.",
-          github: "GitHub",
-          website: "Website"
+          github: "https://github.com/hediyeer/JOBCRAFT-CV-BUILDER",
+          website: "https://jobcraft-b23fc.web.app/"
         },
         {
           title: "TrendKod",
           desc: "I started the development process by doing API tests with Postman; I ensured error-free integration by verifying data structures in advance. In the project, I used Redux Store to manage complex processes like shopping cart, user session, and product filtering from a single point. I managed asynchronous API processes with Redux Thunk. With the dynamic filtering system I prepared, I created a fast infrastructure that allows users to get real-time results based on categories and product features.",
-          github: "GitHub",
-          website: "Website"
+          github: "https://github.com/hediye-ersan/Trend-Kod",
+          website: "https://trend-kod.vercel.app/"
         },
         {
           title: "Portfolio Website",
           desc: "In my first portfolio project of my career journey, I applied modern web standards and central state management principles. Through the structure I designed with LanguageContext.jsx, I developed a multi-language system that dynamically distributes Turkish and English data sets in myData.js to the entire application. I integrated theme management mechanisms with DarkModeToggle.jsx. I also aimed to create a visually impressive experience by focusing on ux/ui design with animations and tailwind css.",
-          github: "GitHub",
-          website: "Website"
+          github: "https://github.com/hediye-ersan/My-page",
+          website: "https://my-page-rho-ochre.vercel.app/"
         },
         {
           title: "ShopCo Ecommerce",
           desc: "I tried to design the e-commerce page designed on Figma with pixel-perfect precision and modular architecture. During the development process, I managed critical processes like cart management, user authorization, and order history with a central state mechanism using React Context API. While applying reset.css standards for the design to appear consistent in every browser, I created a user experience that adapts to device type with custom hooks like useMediaQuery and Tailwind CSS.",
-          github: "GitHub",
-          website: "Website"
+          github: "https://github.com/hediye-ersan/E-commerce",
+          website: "https://e-commerce-drab-six-ds21nudubw.vercel.app/"
         },
         {
           title: "Pizza Order Page",
           desc: "I designed an order flow consisting of homepage, order form, and success confirmation stages in the project. I managed form data like ingredient selection and dough thickness in the order form with React state, ensuring that data only turns into an order after passing correct validations. I improved development by automating user navigation and form functionality with Cypress (E2E) integration and pizza.cy.js test scenarios. I provided the design side with custom headers using CSS.",
-          github: "GitHub",
-          website: "Website"
+          github: "https://github.com/hediye-ersan/My-Pizza-Page",
+          website: "https://pizza-sayfam.vercel.app/"
         },
         {
           title: "Full Stack Quiz",
           desc: "To make the information I learned during my full-stack education permanent and create a personal reference resource, I developed a Quiz application. By managing a comprehensive JSON data set of 161 questions that I prepared with my own research (questions.json); I designed a learning platform on frontend, backend, and database topics. This work represents my motivation to transform complex technical information into a structured data model and digitize the education process.",
-          github: "GitHub",
-          website: "Website"
+          github: "https://github.com/hediye-ersan/Fullstack-Quiz",
+          website: "https://fullstack-quiz-five.vercel.app/"
         }
       ]
     },

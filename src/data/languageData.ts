@@ -143,6 +143,50 @@ export const languageData = {
       copyright: "Telif hakkı © 2026 Hediye Ersan. React & TypeScript ile oluşturulmuştur.",
       terms: "Matematik Mezunu",
       privacy: "Junior Full Stack Geliştirici"
+    },
+
+    // Certificates Section
+    certificates: {
+      title: "Sertifikalarım",
+      subtitle: "Sertifikalarımıza bir göz atalım",
+      certificates: [
+        {
+          title: "Full Stack Track Sertifikası",
+          subtitle: "6 aylık Full Stack Geliştirici eğitim programını başarıyla tamamladım. Eğitim sırasında React, Redux, Java, Spring Boot ve PostgreSQL kullanarak projeler geliştirdim. Şimdi bu bilgiyi profesyonel dünyada uygulamaya ve yeni teknolojileri öğrenmeye devam etmek istiyorum.",
+          image: "/assets/certificate-2.svg",
+          tags: ["Frontend", "Backend", "Java", "Spring Boot", "PostgreSQL", "React", "Redux", "TypeScript", "Full Stack", "OOP"]
+        },
+        {
+          title: "Frontend Geliştirme Sertifikası",
+          subtitle: "3 ay süren Frontend Geliştirme yolculuğumu başarıyla tamamladım ve sertifikamı aldım! 🚀Bu süreçte sadece teorik bilgi edinmekle kalmadım, aynı zamanda React ve JavaScript kullanarak kullanıcı dostu arayüzler geliştirdim ve gerçek dünya senaryolarına dayalı projeler tasarladım. Modern web teknolojileriyle çözümler oluşturmak ve temiz kod ilkelerini uygulamak benim için inanılmaz bir deneyim oldu.",
+          image: "/assets/certificate-4.svg",
+          tags: ["HTML", "CSS", "JavaScript", "React", "Frontend Geliştirme", "UI/UX Tasarım", "Temiz Kod Prensipleri", "Responsive Tasarım", "Web Erişilebilirliği", "Git / GitHub"]
+        },
+        {
+          title: "Proje Yönetimi Sertifikası",
+          subtitle: "Yoğun ve verimli proje yönetimi stajımı başarıyla tamamladım. Bu süreçte Bilişim Hukuku, Yönetim ve Organizasyon, Yapay Zeka ve Veri Bilimi ile Proje Yönetimi dersleri alarak teorik bilgi kazandım ve projeler teslim ederek öğrendiklerimi pratik yapma fırsatı buldum.",
+          image: "/assets/certificate-3.svg",
+          tags: ["Bilişim Hukuku", "Yönetim ve Organizasyon", "Yapay Zeka ve Veri Bilimi", "Proje Yönetimi"]
+        },
+        {
+          title: "Codemasters Challenge Sertifikası",
+          subtitle: "Sektördeki önde gelen teknoloji şirketlerinden uzmanların yer aldığı CodeMasters etkinliğini başarıyla tamamlayarak katılım sertifikamı aldım! Microsoft, Trendyol, Hepsiburada ve Havelsan gibi devlerin perde arkasındaki süreçleri dinlemek, güncel teknoloji trendleri ve uzman görüşleri benim için muazzam bir ilham kaynağıydı. Teknolojik gelişmeleri yakından takip ederek kendimi güncel tutmaya devam ediyorum.",
+          image: "/assets/Codemasters 1.svg",
+          tags: ["Codemaster", "Programlama", "Teknoloji Trendleri", "Microsoft", "Trendyol", "Hepsiburada", "Havelsan"]
+        },
+        {
+          title: "Uluslararası İş Analizi Metodolojisi ve Teknikleri Sertifikası",
+          subtitle: "Uluslararası İş Analizi Metodolojileri ve Teknikleri eğitimimi başarıyla tamamlayarak sertifikamı aldım! İş süreci optimizasyonu, gereksinim analizi ve modern metodolojilerdeki becerilerimi bir üst seviyeye taşıdığım için çok mutluyum.",
+          image: "/assets/certificate-1.svg",
+          tags: ["İş Analizi Metodolojileri", "İş Analizi Teknikleri", "İş Süreci Optimizasyonu", "Gereksinim Analizi", "Agile Metodolojiler", "Scrum", "Kanban"]
+        },
+        {
+          title: "SQL ile Veritabanı Sorgulama Sertifikası",
+          subtitle: "104 saatlik SQL Veritabanı Sorgulama eğitimimi başarıyla tamamlayarak sertifikamı aldım! SQL sorgulama, veritabanı tasarımı ve veri analizindeki becerilerimi bir sonraki seviyeye taşıdığına inanıyorum.",
+          image: "/assets/certificate-5.svg",
+          tags: ["SQL", "Veritabanı Sorgulama", "Veri Analizi", "MySQL"]
+        }
+      ]
     }
   },
 
@@ -290,6 +334,50 @@ export const languageData = {
       copyright: "Copyright © 2026 Hediye Ersan. Built with React & TypeScript.",
       terms: "Mathematics Graduate",
       privacy: "Junior Full Stack Developer"
+    },
+
+    // Certificates Section
+    certificates: {
+      title: "My Certificates",
+      subtitle: "Lets have a look at my Certificates",
+      certificates: [
+        {
+          title: "Full Stack Track Certificate",
+          subtitle: "I successfully completed a 6-month Full Stack Developer training program. During the training, I developed projects using React, Redux, Java, Spring Boot, and PostgreSQL. I am now eager to apply this knowledge in the professional world and continue learning new technologies.",
+          image: "/assets/certificate-2.svg",
+          tags: ["Frontend", "Backend", "Java", "Spring Boot", "PostgreSQL", "React", "Redux", "TypeScript", "Full Stack", "OOP"]
+        },
+        {
+          title: "Frontend Development Certificate",
+          subtitle: "I successfully completed my 3-month Frontend Development journey and earned my certificate! 🚀During this process, I not only gained theoretical knowledge, but also developed user-friendly interfaces using React and JavaScript and designed projects based on real-world scenarios. Creating solutions with modern web technologies and applying clean code principles was an incredible experience for me.",
+          image: "/assets/certificate-4.svg",
+          tags: ["HTML", "CSS", "JavaScript", "React", "Frontend Development", "UI/UX Design", "Clean Code Principles", "Responsive Design", "Web Accessibility", "Git / GitHub"]
+        },
+        {
+          title: "Project Management Certificate",
+          subtitle: "🚀 I successfully completed a month-long intensive and productive project management internship. During this process, I took courses in IT Law, Management and Organization, Artificial Intelligence and Data Science, and Project Management, gaining theoretical knowledge and having the opportunity to put what I learned into practice by delivering projects.",
+          image: "/assets/certificate-3.svg",
+          tags: ["Information Law", "Management and Organization", "Artificial Intelligence and Data Science", "Project Management"]
+        },
+        {
+          title: "Codemasters Challenge Certificate",
+          subtitle: "I successfully completed the CodeMasters event, featuring experts from leading technology companies in the industry, and received my participation certificate! 🚀Listening to the processes behind the scenes at giants like Microsoft, Trendyol, Hepsiburada, and Havelsan, as well as current technology trends and expert opinions, was a tremendous source of inspiration for me. I continue to keep myself updated by closely following technological developments. 💻",
+          image: "/assets/Codemasters 1.svg",
+          tags: ["Codemaster", "Programming", "Technology Trends", "Microsoft", "Trendyol", "Hepsiburada", "Havelsan"]
+        },
+        {
+          title: "International Business Analysis Methodology and Techniques Certificate",
+          subtitle: "I successfully completed my International Business Analysis Methodologies and Techniques training and received my certificate! 🚀 I am delighted to have taken my skills in business process optimization, requirements analysis, and modern methodologies to the next level.",
+          image: "/assets/certificate-1.svg",
+          tags: ["Business Analysis Methodologies", "Business Analysis Techniques", "Business Process Optimization", "Requirements Analysis", "Agile Methodologies", "Scrum", "Kanban"]
+        },
+        {
+          title: "Database Querying with SQL Certificate",
+          subtitle: "I successfully completed my 104-hour SQL Database Querying training and received my certificate! 🚀 I believe it has taken my SQL querying, database design, and data analysis skills to the next level.",
+          image: "/assets/certificate-5.svg",
+          tags: ["SQL", "Database Querying", "Data Analysis", "MySQL"]
+        }
+      ]
     }
   }
 }

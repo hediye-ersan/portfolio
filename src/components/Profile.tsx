@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Profile() {
   // Başlangıçta ve mouse alandan çekildiğinde "Portfolio" aktif kalacak
   const [hoveredButton, setHoveredButton] = useState<"portfolio" | "hireme">("portfolio");
+  const { currentLang } = useLanguage();
 
   return (
     <section className="relative w-full max-w-7xl mx-auto my-auto  flex flex-col items-center justify-start overflow-hidden pt-9 font-sans">
@@ -23,15 +25,12 @@ export default function Profile() {
         <div className="relative z-20 text-center mb-20 transition-all duration-500 group-hover:opacity-0 group-hover:pointer-events-none">
           <div className="relative inline-block mb-4">
             <div className="px-6 py-1.5  rounded-full border-2 border-black text-xl font-medium">
-              Hello!
+              {currentLang.profile.hello}
             </div>
             <img src="/assets/hello-spark.svg" className="absolute -top-3 -right-4 w-6" alt="spark" />
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold text-gray-900 leading-tight tracking-tight">
-            I'm <span className="text-orange">Hediye</span>, <br />
-            <span className="text-gray-900">Web Developer</span>
-          </h1>
+          <h1 className="text-6xl md:text-8xl font-bold text-gray-900 leading-tight tracking-tight" dangerouslySetInnerHTML={{ __html: currentLang.profile.intro }} />
           
           <img src="/assets/left-spark.svg" className="absolute -left-12 bottom w-12 hidden md:block" alt="spark-left" />
         </div>
@@ -73,7 +72,7 @@ export default function Profile() {
                 hoveredButton === "portfolio" ? "text-white" : "text-white/60"
               }`}
             >
-              Portfolio
+              {currentLang.profile.portfolio}
               <svg 
                 width="24" height="24" viewBox="0 0 24 24" fill="none" 
                 stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
@@ -91,7 +90,7 @@ export default function Profile() {
                 hoveredButton === "hireme" ? "text-white" : "text-white/60"
               }`}
             >
-              Hire me
+              {currentLang.profile.hireMe}
               <svg 
                 width="24" height="24" viewBox="0 0 24 24" fill="none" 
                 stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
@@ -107,16 +106,13 @@ export default function Profile() {
         {/* YAN METİNLER */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 max-w-[300px] z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[280px] hidden xl:block">
            <span className="text-7xl text-gray-700 font-serif block mb-2">“</span>
-           <p className="text-gray-700 font-medium text-xl leading-relaxed">
-             I believe in the power of analytical thinking<br />
-              and user-centered design in software.
-           </p>
+           <p className="text-gray-700 font-medium text-xl leading-relaxed" dangerouslySetInnerHTML={{ __html: currentLang.profile.quote }} />
         </div>
 
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[280px] hidden xl:block">
+        <div className="absolute right-0 top-1/2 -translate-y-1/3 z-40 transition-all duration-700 ease-in-out group-hover:-translate-y-[250px] hidden xl:block">
            <div className="flex text-orange text-4xl mb-2">★★★★★</div>
-           <p className="text-6xl font-bold text-gray-900 leading-none">960+</p>
-           <p className="text-xl text-gray-500 tracking-[0.2em] uppercase mt-2">Hour Technical Training</p>
+           <p className="text-6xl font-bold text-gray-900 leading-none">{currentLang.profile.stats.hours}</p>
+           <p className="text-xl text-gray-500 tracking-[0.2em] uppercase mt-2">{currentLang.profile.stats.hoursLabel}</p>
         </div>
 
       </div>

@@ -7,7 +7,7 @@ export default function Profile() {
   const { currentLang } = useLanguage();
 
   return (
-    <section className="relative w-full max-w-7xl mx-auto my-auto  flex flex-col items-center justify-start overflow-hidden pt-32 font-sans">
+    <section className="relative w-full max-w-7xl mx-auto my-auto  flex flex-col items-center justify-start overflow-hidden pt-48 font-sans">
       
       {/* ANA KAPSAYICI */}
       <div className="group relative w-full h-[850px] flex flex-col items-center justify-center">

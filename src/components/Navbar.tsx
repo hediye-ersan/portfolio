@@ -5,9 +5,11 @@ import { useLanguage } from "../contexts/LanguageContext"
 export default function Navbar() {
   const [active, setActive] = useState(0)
   const { currentLang, setLanguage, language } = useLanguage()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const scrollToSection = (index: number) => {
     setActive(index)
+    setIsMobileMenuOpen(false)
 
     const sectionIds = ['home', 'projects', 'experience', 'skills', 'certificate', 'contact']
     const targetId = sectionIds[index]
@@ -33,7 +35,8 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 w-full flex justify-center mt-9 items-center max-w-7xl z-50 mx-auto">
+      {/* DESKTOP NAVBAR - Exactly as original */}
+      <nav className="fixed top-0 left-0 right-0 w-full justify-center mt-9 items-center max-w-7xl z-50 mx-auto hidden lg:flex">
         <div className="bg-black/95 backdrop-blur-sm rounded-full p-[10px] flex items-center justify-between w-full">
           {/* LEFT */}
           <div className="flex items-center gap-4">
@@ -91,6 +94,91 @@ export default function Navbar() {
         </div>
       </nav>
 
+      {/* MOBILE NAVBAR */}
+      <nav className="fixed top-4 left-4 right-4 z-[60] lg:hidden">
+        <div className="bg-black/70 border border-white/10 backdrop-blur-md rounded-full px-4 py-3 flex items-center justify-between w-full shadow-2xl transition-all duration-300">
+          {/* LEFT - Logo Only */}
+          <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="logo-circle w-9 h-9 flex-shrink-0 bg-gradient-to-br from-orange to-amber-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-orange/20">
+              HE
+            </div>
+            <div className="relative overflow-hidden flex items-center min-w-0">
+              <span className="text-sm tracking-wide text-white font-semibold truncate block">
+                {currentLang.nav.logo.name}
+              </span>
+            </div>
+          </div>
+
+          {/* RIGHT - Hamburger Menu + Language */}
+          <div className="flex items-center justify-end gap-3 flex-shrink-0 ml-2">
+            {/* Mobile Language Toggle */}
+            <button
+              onClick={() => setLanguage(language === "TR" ? "EN" : "TR")}
+              className="w-10 text-xs font-bold text-white/80 hover:text-white bg-white/5 hover:bg-white/10 px-2.5 py-1.5 rounded-lg transition-colors border border-white/5 active:scale-95 flex items-center justify-center"
+            >
+              {language === "TR" ? "EN" : "TR"}
+            </button>
+
+            {/* Hamburger Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="flex flex-col items-end justify-center gap-[5px] p-1 relative w-6 h-6"
+              aria-label="Toggle menu"
+            >
+              <span className={`block h-[2px] bg-white transition-all duration-300 ease-out origin-right ${isMobileMenuOpen ? 'w-6 -rotate-[42deg] -translate-y-[1px]' : 'w-6'}`} />
+              <span className={`block h-[2px] bg-white transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-0 w-0' : 'w-5'}`} />
+              <span className={`block h-[2px] bg-white transition-all duration-300 ease-out origin-right ${isMobileMenuOpen ? 'w-6 rotate-[42deg] translate-y-[1px]' : 'w-4'}`} />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* FULL SCREEN MOBILE MENU OVERLAY */}
+      <div
+        className={`fixed inset-0 bg-black/95 backdrop-blur-2xl z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden flex flex-col justify-center items-center ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+      >
+        <div className="flex flex-col items-center gap-4 w-full px-8 mt-12">
+          {currentLang.nav.links.map((item, index) =>
+            active === index ? (
+              <div
+                key={item}
+                className={`transform transition-all duration-500 w-full flex justify-center ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                style={{ transitionDelay: `${isMobileMenuOpen ? index * 100 + 100 : 0}ms` }}
+              >
+                <OrangeButton
+                  onClick={() => scrollToSection(index)}
+                  className="w-full max-w-[280px] py-4 text-xl font-bold tracking-wider text-center shadow-orange/20 shadow-xl border border-orange/50"
+                >
+                  {item}
+                </OrangeButton>
+              </div>
+            ) : (
+              <div
+                key={item}
+                className={`transform transition-all duration-500 w-full flex justify-center ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                style={{ transitionDelay: `${isMobileMenuOpen ? index * 100 + 100 : 0}ms` }}
+              >
+                <button
+                  onClick={() => scrollToSection(index)}
+                  className="w-full max-w-[280px] py-4 text-2xl font-medium tracking-wide text-white/50 hover:text-white hover:scale-105 active:scale-95 transition-all duration-300 text-center"
+                >
+                  {item}
+                </button>
+              </div>
+            )
+          )}
+        </div>
+        
+        {/* Footer/Contact in Menu */}
+        <div 
+          className={`absolute bottom-12 transform transition-all duration-700 ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+          style={{ transitionDelay: `${isMobileMenuOpen ? currentLang.nav.links.length * 100 + 200 : 0}ms` }}
+        >
+           <p className="text-white/30 text-xs tracking-widest uppercase">{currentLang.nav.logo.title}</p>
+        </div>
+      </div>
     </>
   )
 }

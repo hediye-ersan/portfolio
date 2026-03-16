@@ -79,7 +79,7 @@ export default function Profile() {
         </div>
 
         {/* 3. VE 4. KATMAN: FOTOĞRAF, HALKA VE BUTONLAR */}
-        <div className="relative z-30 mt-[-40px] sm:mt-[-50px] md:mt-100px] flex justify-center w-full">
+        <div className="relative z-30 mt-[-40px] sm:mt-[-50px] md:mt-[-100px] flex justify-center w-full">
           
           <img 
             src="/assets/orange-circle.svg" 

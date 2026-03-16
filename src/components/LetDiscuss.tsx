@@ -41,28 +41,28 @@ export default function LetDiscuss() {
   return (
     <section
       id="discuss"
-      className="py-20 px-4 bg-white flex items-center justify-center"
+      className="py-14 sm:py-20 px-4 bg-white flex items-center justify-center"
       style={{ fontFamily: "Inter, 'Helvetica Neue', Arial, sans-serif" }}
     >
-      <div className="w-full max-w-7xl text-center space-y-8">
-        <div className="space-y-3 md:space-y-4">
-          <p className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+      <div className="w-full max-w-7xl text-center space-y-7 sm:space-y-8">
+        <div className="space-y-2 sm:space-y-3 md:space-y-4">
+          <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
             {currentLang.letsDiscuss.title}
           </p>
-          <p className="text-5xl font-extrabold" style={{ color: accent }}>
+          <p className="text-4xl sm:text-5xl font-extrabold" style={{ color: accent }}>
             {currentLang.letsDiscuss.subtitle}
           </p>
         </div>
 
         <div className="relative mx-auto w-full max-w-4xl">
-          <div className="flex items-center gap-4 md:gap-6 px-4 md:px-5 py-3 md:py-3.5 rounded-full border shadow-sm">
-            <span className="flex items-center justify-center rounded-full shrink-0">
-              <img src="/assets/email.svg" alt="Email icon" className="w-full" />
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 md:gap-6 px-4 md:px-5 py-3 md:py-3.5 rounded-2xl sm:rounded-full border shadow-sm">
+            <span className="flex items-center justify-center rounded-full shrink-0 w-12 h-12 sm:w-10 sm:h-10 self-center sm:self-auto">
+              <img src="/assets/email.svg" alt="Email icon" className="w-8 h-8 sm:w-7 sm:h-7" />
             </span>
 
-            <div className="flex-1 relative">
-              <div className="text-base md:text-lg text-gray-700">{typed || currentLang.letsDiscuss.emailPlaceholder}</div>
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 text-base md:text-lg text-gray-700 opacity-0 select-none">
+            <div className="flex-1 relative text-center sm:text-left">
+              <div className="text-sm sm:text-base md:text-lg text-gray-700">{typed || currentLang.letsDiscuss.emailPlaceholder}</div>
+              <div className="absolute left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 top-1/2 -translate-y-1/2 text-sm sm:text-base md:text-lg text-gray-700 opacity-0 select-none">
                 {email}
               </div>
             </div>
@@ -70,7 +70,7 @@ export default function LetDiscuss() {
             <motion.button
               type="button"
               aria-label="Send email"
-              className={`relative inline-flex items-center justify-center px-8 md:px-10 py-5 md:py-3.5 rounded-full text-white font-semibold text-lg leading-none transition-colors ${
+              className={`relative inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-3.5 rounded-full text-white font-semibold text-base sm:text-lg leading-none transition-colors ${
                 phase === "press" ? " bg-[#ff8a00]" : "bg-orange"
               }`}
               animate={phase === "press" ? { scale: 0.95 } : { scale: 1 }}
@@ -83,7 +83,7 @@ export default function LetDiscuss() {
           </div>
 
           <motion.div
-            className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 z-10"
+            className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 z-10 hidden sm:block"
             variants={cursorVariants}
             animate={phase}
             transition={{ type: "spring", stiffness: 280, damping: 22 }}
@@ -94,7 +94,7 @@ export default function LetDiscuss() {
           </motion.div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-slate-700 text-base md:text-lg">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 text-slate-700 text-sm sm:text-base md:text-lg">
           <SocialStat icon={() => <FiAward className="w-5 h-5 text-orange-500" />} label={currentLang.letsDiscuss.stats.education} />
           <Divider />
           <SocialStat icon={() => <FiCode className="w-5 h-5 text-orange-500" />} label={currentLang.letsDiscuss.stats.role} />

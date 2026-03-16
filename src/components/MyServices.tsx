@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 interface Project {
@@ -12,7 +12,15 @@ interface Project {
 
 export default function MyServices() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const { currentLang } = useLanguage();
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   
   // Project images mapping
   const projectImages = [
@@ -29,13 +37,16 @@ export default function MyServices() {
     image: projectImages[index] || "/assets/project-1.svg"
   }));
 
-  // Projeleri 2'şerli gruplara ayırıyoruz
-  const itemsPerPage = 2;
+  // Projeleri duruma göre 1 (mobil) veya 2 (desktop) gruplara ayırıyoruz
+  const itemsPerPage = isMobile ? 1 : 2;
   const totalPages = Math.ceil(services.length / itemsPerPage);
-  const currentItems = services.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+  
+  // Eğer resize sonrası currentPage sınırları aşarsa, güvenli bir değerde tutalım
+  const safePage = Math.min(currentPage, totalPages - 1 >= 0 ? totalPages - 1 : 0);
+  const currentItems = services.slice(safePage * itemsPerPage, (safePage + 1) * itemsPerPage);
 
   return (
-    <section className="relative w-full py-24 overflow-hidden rounded-[3rem] border border-white/5"
+    <section className="relative w-full py-12 md:py-24 overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/5"
       style={{ backgroundImage: "url('/assets/image-bg.svg')", backgroundSize: "cover", backgroundPosition: "center" }}>
 
       {/* HAREKETLİ TURUNCU BLOBLAR */}
@@ -63,9 +74,9 @@ export default function MyServices() {
         />
       </div>
 
-      <div className="relative max-w-7xl z-10 container mx-auto">
+      <div className="relative max-w-7xl z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         {/* BAŞLIK KISMI */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-4 md:gap-6">
           <div className="space-y-4">
             <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
               {currentLang.projects.title}
@@ -78,23 +89,31 @@ export default function MyServices() {
         </div>
 
         {/* PROJE KARTLARI - ANIMASYONLU GEÇİŞ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 min-h-[500px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-[450px] md:min-h-[500px]">
           <AnimatePresence mode="wait">
-            {currentItems.map((service, idx) => (
-              <ProjectCard key={service.title} service={service} idx={idx} currentPage={currentPage} />
-            ))}
+            {currentItems.map((service, idx) => {
+              const globalIdx = safePage * itemsPerPage + idx;
+              return (
+                <ProjectCard
+                  key={service.title}
+                  service={service}
+                  globalIdx={globalIdx}
+                  isMobile={isMobile}
+                />
+              )
+            })}
           </AnimatePresence>
         </div>
 
         {/* DINAMIK DOTS (NOKTALAR) */}
-        <div className="flex justify-center gap-3 mt-20">
+        <div className="flex justify-center items-center flex-wrap gap-2 md:gap-3 mt-12 md:mt-20">
           {Array.from({ length: totalPages }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentPage(index)}
-              className={`transition-all duration-500 rounded-full ${currentPage === index
-                  ? "w-12 h-3 bg-orange shadow-[0_0_15px_rgba(255,138,0,0.5)]"
-                  : "w-3 h-3 bg-white/10 hover:bg-white/30"
+              className={`transition-all duration-500 rounded-full ${safePage === index
+                  ? "w-8 h-2 md:w-12 md:h-3 bg-orange shadow-[0_0_15px_rgba(255,138,0,0.5)]"
+                  : "w-2 h-2 md:w-3 md:h-3 bg-white/10 hover:bg-white/30"
                 }`}
             />
           ))}
@@ -106,16 +125,22 @@ export default function MyServices() {
 
 interface ProjectCardProps {
   service: Project;
-  idx: number;
-  currentPage: number;
+  globalIdx: number;
+  isMobile: boolean;
 }
 
-function ProjectCard({ service, idx, currentPage }: ProjectCardProps) {
+function ProjectCard({ service, globalIdx, isMobile }: ProjectCardProps) {
   const [hoveredButton, setHoveredButton] = useState<"github" | "website">("github");
   const [showTooltip, setShowTooltip] = useState(false);
+  const [showDescOnMobile, setShowDescOnMobile] = useState(false);
+
+  useEffect(() => {
+    // Ensure hover-only behavior on desktop after a resize
+    if (!isMobile) setShowDescOnMobile(false);
+  }, [isMobile]);
 
   // JobCraft projesi için kontrol (ilk proje)
-  const isJobCraft = idx === 0 && currentPage === 0;
+  const isJobCraft = globalIdx === 0;
   const tooltipMessage = "Bu proje bir ekip çalışmasıdır ve gizlilik nedeniyle kaynak kodları paylaşıma kapalıdır.";
 
   return (
@@ -123,9 +148,9 @@ function ProjectCard({ service, idx, currentPage }: ProjectCardProps) {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      transition={{ duration: 0.5, delay: idx * 0.1 }}
+      transition={{ duration: 0.5, delay: (globalIdx % 2) * 0.1 }}
       whileHover={{ y: -15 }}
-      className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange"
+      className="relative bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2rem] md:rounded-[3rem] p-6 md:p-8 flex flex-col h-full group transition-all duration-500 hover:border-orange"
     >
       <div className="mb-6">
         <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-orange transition-colors">
@@ -133,14 +158,18 @@ function ProjectCard({ service, idx, currentPage }: ProjectCardProps) {
         </h3>
       </div>
 
-      <div className="relative flex-grow bg-black/20 mb-6 aspect-[4/3] overflow-hidden rounded-[1.4rem]">
+      <div
+        className={`relative flex-grow bg-black/20 mb-6 aspect-[4/3] overflow-hidden rounded-[1.4rem] ${isMobile ? "cursor-pointer" : ""}`}
+        onClick={isMobile ? () => setShowDescOnMobile((prev) => !prev) : undefined}
+      >
         <img src={service.image} alt={service.title} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
         <motion.div
           initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
+          animate={isMobile ? { opacity: showDescOnMobile ? 1 : 0 } : { opacity: 0 }}
+          whileHover={isMobile ? undefined : { opacity: 1 }}
           className="absolute inset-0 bg-black/85 backdrop-blur-sm p-6 flex flex-col justify-center items-center text-center overflow-y-auto"
         >
-          <p className="text-gray-200 text-sm leading-relaxed line-clamp-20">
+          <p className="text-gray-200 text-[10px] md:text-sm leading-relaxed line-clamp-20">
             {service.desc}
           </p>
         </motion.div>

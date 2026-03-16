@@ -1,11 +1,34 @@
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 export default function WhyHireMe() {
   const { currentLang } = useLanguage();
+  const ringRef = useRef<HTMLDivElement | null>(null);
+  const [ringsInView, setRingsInView] = useState(false);
+
+  useEffect(() => {
+    const node = ringRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setRingsInView(entry.isIntersecting);
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <section id="why" className="pt-[50px] bg-gray-100">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center">
-        <div className="group relative flex-[1.05] w-full max-w-[680px] min-w-[420px] overflow-hidden">
+    <section id="why" className="pt-10 sm:pt-[50px] bg-gray-100">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-6 px-4 sm:px-6 lg:px-0">
+        <div
+          ref={ringRef}
+          className={`group relative flex-[1.05] w-full max-w-[680px] min-w-0 lg:min-w-[420px] overflow-hidden ${
+            ringsInView ? "ring-animate" : ""
+          }`}
+        >
           <div className="pointer-events-none absolute inset-0">
             {[1.04, 1.16].map((scale, i) => (
               <img
@@ -25,23 +48,28 @@ export default function WhyHireMe() {
           <img
             src="/assets/hireme-photo.png"
             alt="Hire me"
-            className="relative z-20 w-full h-auto mx-auto object-contain drop-shadow-2xl"
+            className="relative z-20 w-full h-auto mx-auto object-contain drop-shadow-2xl hidden lg:block"
+          />
+          <img
+            src="/assets/hireme-alt.png"
+            alt="Hire me"
+            className="relative z-20 w-full h-auto mx-auto object-contain drop-shadow-2xl lg:hidden"
           />
         </div>
 
         <div className="flex-[0.9] w-full max-w-[540px] text-center lg:text-left">
           <h2
-            className="text-4xl lg:text-5xl font-bold text-gray-700"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-700"
             dangerouslySetInnerHTML={{ __html: currentLang.whyHireMe.title }}
           ></h2>
 
           <p 
-            className="mt-4 text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0"
+            className="mt-4 text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0"
             dangerouslySetInnerHTML={{ __html: currentLang.whyHireMe.description }}
           ></p>
 
 
-          <div className="mt-12 grid grid-cols-6 grid-rows-2 gap-4 justify-items-center w-full max-w-[560px] mx-auto lg:mx-0">
+          <div className="skill-grid mt-10 sm:mt-12 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 grid-rows-2 sm:grid-rows-3 lg:grid-rows-2 gap-4 justify-items-center w-full max-w-[560px] mx-auto lg:mx-0">
             {[
               { file: "js-logo 1.svg", top: "8%", left: "6%", delay: 0 },
               { file: "react-logo 1.svg", top: "8%", left: "44%", delay: 0.4 },
@@ -67,7 +95,7 @@ export default function WhyHireMe() {
                   key={item.file}
                   className={`flex items-center justify-center ${
                     isTailwind
-                      ? "w-[80px] h-[80px] rounded-full bg-white shadow-md border border-slate-100"
+                      ? "w-[72px] h-[72px] sm:w-[80px] sm:h-[80px] lg:w-[80px] lg:h-[80px] rounded-full bg-white shadow-md border border-slate-100"
                       : ""
                   }`}
                   style={{
@@ -80,7 +108,7 @@ export default function WhyHireMe() {
                   <img
                     src={`/assets/${item.file}`}
                     alt={item.file}
-                    className="object-contain"
+                    className="object-contain w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] lg:w-[60px] lg:h-[60px]"
                   />
                 </div>
               );
@@ -106,6 +134,17 @@ export default function WhyHireMe() {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
           55% { opacity: 0.75; transform: translate(-50%, -50%) scale(1.03); }
           100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+        }
+        @media (max-width: 1023px) {
+          .ring-animate .ring-layer {
+            animation: ring-pop 1s ease-out forwards;
+          }
+        }
+        @media (max-width: 1023px) {
+          .skill-grid > div {
+            grid-column: auto !important;
+            grid-row: auto !important;
+          }
         }
       `}</style>
     </section>

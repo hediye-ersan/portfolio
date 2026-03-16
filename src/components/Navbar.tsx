@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import OrangeButton from "./ui/OrangeButton"
 import { useLanguage } from "../contexts/LanguageContext"
 
 const SECTION_IDS = ["home", "projects", "experience", "skills", "certificate", "contact"] as const
@@ -93,15 +92,15 @@ export default function Navbar() {
         <div className="bg-black/95 backdrop-blur-sm rounded-full p-[10px] flex items-center justify-between w-full">
           {/* LEFT */}
           <div className="flex items-center gap-4">
-            {currentLang.nav.links.slice(0, 3).map((item, index) =>
-              active === index ? (
-                <OrangeButton key={item} onClick={() => scrollToSection(index)} className="px-8 py-5 text-xl whitespace-nowrap">
-                  {item}
-                </OrangeButton>
-              ) : (
-                <NavButton key={item} label={item} onClick={() => scrollToSection(index)} />
-              )
-            )}
+            {currentLang.nav.links.slice(0, 3).map((item, index) => (
+              <NavItemButton
+                key={item}
+                label={item}
+                isActive={active === index}
+                onClick={() => scrollToSection(index)}
+                className="px-8 py-5 text-xl"
+              />
+            ))}
           </div>
 
           {/* CENTER LOGO */}
@@ -134,15 +133,15 @@ export default function Navbar() {
 
           {/* RIGHT */}
           <div className="flex items-center gap-4">
-            {currentLang.nav.links.slice(3).map((item, index) =>
-              active === index + 3 ? (
-                <OrangeButton key={item} onClick={() => scrollToSection(index + 3)} className="px-8 py-5 text-xl whitespace-nowrap">
-                  {item}
-                </OrangeButton>
-              ) : (
-                <NavButton key={item} label={item} onClick={() => scrollToSection(index + 3)} />
-              )
-            )}
+            {currentLang.nav.links.slice(3).map((item, index) => (
+              <NavItemButton
+                key={item}
+                label={item}
+                isActive={active === index + 3}
+                onClick={() => scrollToSection(index + 3)}
+                className="px-8 py-5 text-xl"
+              />
+            ))}
           </div>
         </div>
       </nav>
@@ -193,35 +192,21 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col items-center gap-2 w-full px-6">
-          {currentLang.nav.links.map((item, index) =>
-            active === index ? (
-              <div
-                key={item}
-                className={`transform transition-all duration-500 w-full flex justify-center ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-                style={{ transitionDelay: `${isMobileMenuOpen ? index * 100 + 100 : 0}ms` }}
-              >
-                <OrangeButton
-                  onClick={() => scrollToSection(index)}
-                  className="w-full max-w-[280px] py-3 text-base font-bold tracking-wide text-center shadow-orange/20 shadow-xl border border-orange/50"
-                >
-                  {item}
-                </OrangeButton>
-              </div>
-            ) : (
-              <div
-                key={item}
-                className={`transform transition-all duration-500 w-full flex justify-center ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-                style={{ transitionDelay: `${isMobileMenuOpen ? index * 100 + 100 : 0}ms` }}
-              >
-                <button
-                  onClick={() => scrollToSection(index)}
-                  className="w-full max-w-[280px] py-3 text-base font-medium tracking-wide text-white/60 hover:text-white hover:scale-105 active:scale-95 transition-all duration-300 text-center"
-                >
-                  {item}
-                </button>
-              </div>
-            )
-          )}
+          {currentLang.nav.links.map((item, index) => (
+            <div
+              key={item}
+              className={`transform transition-all duration-500 w-full flex justify-center ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+              style={{ transitionDelay: `${isMobileMenuOpen ? index * 100 + 100 : 0}ms` }}
+            >
+              <NavItemButton
+                label={item}
+                isActive={active === index}
+                onClick={() => scrollToSection(index)}
+                className="w-full max-w-[280px] py-3 text-base tracking-wide text-center"
+                activeClassName="shadow-orange/20 shadow-xl border border-orange/50"
+              />
+            </div>
+          ))}
         </div>
         
         {/* Footer/Contact in Menu */}
@@ -246,11 +231,21 @@ type LanguageToggleButtonProps = {
   setLanguage: (language: "TR" | "EN") => void
 }
 
-function NavButton({ label, onClick }: NavButtonProps) {
+type NavItemButtonProps = NavButtonProps & {
+  isActive: boolean
+  className?: string
+  activeClassName?: string
+}
+
+function NavItemButton({ label, onClick, isActive, className = "", activeClassName = "" }: NavItemButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="px-8 py-5 text-xl font-semibold rounded-full text-white hover:text-white hover:bg-white/10 transition-all duration-300 whitespace-nowrap"
+      className={`relative rounded-full font-semibold transition-all duration-300 ease-out whitespace-nowrap ${
+        isActive
+          ? `bg-orange text-white shadow-lg shadow-orange/30 ${activeClassName}`
+          : "text-white/70 hover:text-white hover:bg-white/10"
+      } ${className}`}
     >
       {label}
     </button>

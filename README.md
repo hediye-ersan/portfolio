@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion.
 
-Currently, two official plugins are available:
+## Overview
+This project is a single-page portfolio with smooth navigation and animated sections. Content is localized for TR/EN via a simple language context.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Sections
+- Hero / Profile
+- Projects (carousel)
+- Experience (timeline)
+- Skills / Why Hire Me
+- Certificates
+- Contact / Footer
 
-## React Compiler
+## Features
+- Responsive layout for mobile and desktop
+- Smooth scroll navigation with active section tracking
+- Animated UI (Framer Motion)
+- TR/EN language toggle
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- React Icons
 
-## Expanding the ESLint configuration
+## Project Structure
+- `src/components` UI sections and shared components
+- `src/pages/Home.tsx` page composition and section anchors
+- `src/contexts/LanguageContext.tsx` language toggle
+- `src/data/languageData.ts` localized content
+- `public/assets` static images and icons
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Scripts
+- `npm run dev` Start the dev server
+- `npm run build` Type check and build
+- `npm run preview` Preview the production build
+- `npm run lint` Run ESLint
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Deployment (Vercel)
+- Framework preset: `Vite`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Install command: `npm install` (default)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Notes
+- Navbar section IDs are defined in `src/components/Navbar.tsx`.
+- Sections are mounted in `src/pages/Home.tsx`.
+- Update content in `src/data/languageData.ts`.

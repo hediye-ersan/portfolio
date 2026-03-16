@@ -25,11 +25,11 @@ export default function MyProjects() {
   }
 
   return (
-    <section id="projects" className="py-20 px-6 bg-white">
+    <section id="projects" className="py-14 sm:py-20 px-4 sm:px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-start justify-between gap-6 flex-wrap">
           <div>
-            <p className="text-4xl md:text-5xl font-bold leading-tight text-slate-800">
+            <p className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-slate-800">
               {currentLang.certificates.subtitle.split(' ').slice(0, -1).join(' ')}
               <br />
               my <span className="text-[#ff8a00]">{currentLang.certificates.subtitle.split(' ').pop()}</span>
@@ -39,7 +39,7 @@ export default function MyProjects() {
         </div>
 
         {/* Carousel */}
-        <div className="relative mt-10">
+        <div className="relative mt-8 sm:mt-10">
           <button
             onClick={prev}
             className="hidden md:flex absolute left-[-50px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-orange text-white shadow hover:-translate-y-[55%] transition items-center justify-center"
@@ -49,7 +49,7 @@ export default function MyProjects() {
           </button>
 
           <div className="overflow-visible">
-            <div className="flex items-center justify-center gap-3 md:gap-6 -mx-3">
+            <div className="flex items-center justify-center gap-3 md:gap-6 -mx-2 sm:-mx-3">
               {visibleIndexes.map((idx, position) => {
                 const item = certificates[idx]
                 const role = position === 1 ? "active" : position === 0 ? "left" : "right"
@@ -59,8 +59,8 @@ export default function MyProjects() {
                 return (
                   <motion.div
                     key={`${item.image}-${idx}`}
-                    className={`shrink-0 px-2 md:px-4 py-4 rounded-[32px] ${
-                      role === "active" ? "basis-full md:basis-2/5 bg-orange" : "basis-5/12 md:basis-1/4"
+                    className={`shrink-0 px-1 sm:px-2 md:px-4 py-3 sm:py-4 rounded-[24px] sm:rounded-[32px] ${
+                      role === "active" ? "basis-full sm:basis-10/12 md:basis-2/5 bg-orange" : "basis-5/12 md:basis-1/4"
                     } ${role !== "active" ? "hidden sm:block" : ""}`}
                     layout
                     initial={false}
@@ -69,11 +69,11 @@ export default function MyProjects() {
                     transition={{ type: "spring", stiffness: 240, damping: 24 }}
                   >
                     <div
-                      className={`relative overflow-hidden rounded-[32px] shadow-[0_28px_65px_-26px_rgba(0,0,0,0.35)] transition-all duration-300 ${
+                      className={`relative overflow-hidden rounded-[24px] sm:rounded-[32px] shadow-[0_28px_65px_-26px_rgba(0,0,0,0.35)] transition-all duration-300 ${
                         isActive ? "" : "bg-white border border-slate-100/80"
                       }`}
                     >
-                      <div className="overflow-hidden rounded-[28px] bg-white">
+                      <div className="overflow-hidden rounded-[20px] sm:rounded-[28px] bg-white">
                         <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                       </div>
                     </div>
@@ -105,11 +105,11 @@ export default function MyProjects() {
         </div>
 
         {/* Tags for the active certificate */}
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
           {active.tags.map((tag) => (
             <span
               key={tag}
-              className="px-4 py-2 rounded-full bg-gray-100 text-black text-sm shadow-sm"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-100 text-black text-xs sm:text-sm shadow-sm"
             >
               {tag}
             </span>
@@ -117,14 +117,14 @@ export default function MyProjects() {
         </div>
 
         {/* Detail card */}
-        <div className="mt-10 text-center">
-          <h3 className="text-4xl font-bold text-gray-700 flex items-center justify-center gap-3">
+        <div className="mt-8 sm:mt-10 text-center">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 flex items-center justify-center gap-3">
             {active.title}{" "}
-            <span className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-orange text-white shadow-md">
+            <span className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 inline-flex items-center justify-center rounded-full bg-orange text-white shadow-md">
               <FiArrowUpRight className="w-4 h-4" />
             </span>
           </h3>
-          <p className="mt-3 max-w-2xl mx-auto text-gray-700">
+          <p className="mt-3 max-w-2xl mx-auto text-sm sm:text-base text-gray-700">
             {active.subtitle}
           </p>
         </div>

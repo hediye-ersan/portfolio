@@ -12,13 +12,13 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#272727] text-white">
-      <div className="max-w-7xl mx-auto px-6 py-12 md:py-14 rounded-t-3xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-14 rounded-t-3xl">
         {/* Top row */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-8">
-          <h2 className="text-4xl md:text-5xl font-semibold">{currentLang.footer.connect}</h2>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 sm:pb-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold">{currentLang.footer.connect}</h2>
           <a
             href="mailto:hediyesnl9@gmail.com?subject=Let%27s%20work%20together"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-orange text-white font-semibold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-orange text-white font-semibold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition w-full sm:w-auto"
           >
             {currentLang.footer.hireMe}
           </a>
@@ -27,7 +27,7 @@ export default function Footer() {
         <hr className="border-[#3a3a3a]" />
 
         {/* Middle grid */}
-        <div className="grid md:grid-cols-3 gap-10 py-10">
+        <div className="grid md:grid-cols-3 gap-8 sm:gap-10 py-8 sm:py-10">
           {/* Brand / About */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
 
           {/* Navigation / Contact */}
-          <div className="grid grid-cols-2 gap-6 text-sm text-gray-200">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-gray-200">
             <div>
               <h4 className="text-orange font-semibold mb-3">{currentLang.footer.navigation.title}</h4>
               <ul className="space-y-2">
@@ -77,7 +77,7 @@ export default function Footer() {
           {/* Subscribe */}
           <div className="space-y-4">
             <h4 className="text-orange font-semibold">{currentLang.footer.subscribe.title}</h4>
-            <div className="flex items-stretch rounded-md overflow-hidden bg-white/5 border border-[#3a3a3a]">
+            <div className="flex flex-col sm:flex-row items-stretch rounded-md overflow-hidden bg-white/5 border border-[#3a3a3a]">
               <input
                 type="email"
                 value="hediyesnl9@gmail.com"
@@ -87,7 +87,7 @@ export default function Footer() {
               <button
                 type="button"
                 onClick={() => window.location.href = 'mailto:hediyesnl9@gmail.com?subject=Let\'s%20work%20together'}
-                className="px-4 bg-orange text-white text-sm font-semibold flex items-center justify-center hover:bg-orange/90 transition-colors"
+                className="px-4 py-3 sm:py-0 bg-orange text-white text-sm font-semibold flex items-center justify-center hover:bg-orange/90 transition-colors"
                 aria-label="Send"
               >
                 <FiArrowRight className="w-4 h-4" />
@@ -99,7 +99,7 @@ export default function Footer() {
         <hr className="border-[#3a3a3a]" />
 
         {/* Bottom row */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-6 text-xs md:text-sm text-gray-300">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 text-xs md:text-sm text-gray-300">
           <div>{currentLang.footer.copyright}</div>
           <div className="flex items-center gap-3">
             <a className="hover:text-white cursor-default">{currentLang.footer.terms}</a>

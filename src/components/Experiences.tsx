@@ -6,7 +6,7 @@ export default function Experiences() {
   const experiences = currentLang.experience.experiences;
 
   return (
-    <section className="w-full py-14 sm:py-20 md:py-24 bg-white font-sans">
+    <section className="w-full py-14 sm:py-20 md:py-24 bg-white font-sans text-justify">
       <div className="container mx-auto px-4 sm:px-6">
         
         {/* BAŞLIK: My (Lacivert/Antrasit) Work Experince (Turuncu) */}

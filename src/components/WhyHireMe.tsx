@@ -64,7 +64,7 @@ export default function WhyHireMe() {
           ></h2>
 
           <p 
-            className="mt-4 text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0"
+            className="mt-4 text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0 text-justify"
             dangerouslySetInnerHTML={{ __html: currentLang.whyHireMe.description }}
           ></p>
 
@@ -95,7 +95,7 @@ export default function WhyHireMe() {
                   key={item.file}
                   className={`flex items-center justify-center ${
                     isTailwind
-                      ? "w-[72px] h-[72px] sm:w-[80px] sm:h-[80px] lg:w-[80px] lg:h-[80px] rounded-full bg-white shadow-md border border-slate-100"
+                      ? "rounded-full bg-white shadow-md border border-slate-100"
                       : ""
                   }`}
                   style={{

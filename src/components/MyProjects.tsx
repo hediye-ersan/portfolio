@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState, type TouchEvent } from "react"
 import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from "react-icons/fi"
 import { motion } from "framer-motion"
 import { useLanguage } from "../contexts/LanguageContext"
@@ -17,6 +17,35 @@ export default function MyProjects() {
 
   const next = () => setCurrent((c) => (c + 1) % total)
   const prev = () => setCurrent((c) => (c - 1 + total) % total)
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
+  const touchDelta = useRef<{ x: number; y: number } | null>(null)
+
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    const t = e.touches[0]
+    touchStart.current = { x: t.clientX, y: t.clientY }
+    touchDelta.current = { x: 0, y: 0 }
+  }
+
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    if (!touchStart.current) return
+    const t = e.touches[0]
+    touchDelta.current = {
+      x: t.clientX - touchStart.current.x,
+      y: t.clientY - touchStart.current.y,
+    }
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart.current || !touchDelta.current) return
+    const { x, y } = touchDelta.current
+    const isSwipe = Math.abs(x) > 50 && Math.abs(x) > Math.abs(y) * 1.2
+    if (isSwipe) {
+      if (x < 0) next()
+      else prev()
+    }
+    touchStart.current = null
+    touchDelta.current = null
+  }
 
   const slideVariants = {
     active: { opacity: 1, scale: 1, y: 0, x: 0, filter: "blur(0px)" },
@@ -32,14 +61,20 @@ export default function MyProjects() {
             <p className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-slate-800">
               {currentLang.certificates.subtitle.split(' ').slice(0, -1).join(' ')}
               <br />
-              my <span className="text-[#ff8a00]">{currentLang.certificates.subtitle.split(' ').pop()}</span>
+              <span className="text-[#ff8a00]">{currentLang.certificates.subtitle.split(' ').pop()}</span>
             </p>
           </div>
          
         </div>
 
         {/* Carousel */}
-        <div className="relative mt-8 sm:mt-10">
+        <div
+          className="relative mt-8 sm:mt-10 touch-pan-y"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+        >
           <button
             onClick={prev}
             className="hidden md:flex absolute left-[-50px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-orange text-white shadow hover:-translate-y-[55%] transition items-center justify-center"

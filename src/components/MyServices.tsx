@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, type TouchEvent } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 interface Project {
@@ -14,6 +14,8 @@ export default function MyServices() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const { currentLang } = useLanguage();
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const touchDelta = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -40,10 +42,40 @@ export default function MyServices() {
   // Projeleri duruma göre 1 (mobil) veya 2 (desktop) gruplara ayırıyoruz
   const itemsPerPage = isMobile ? 1 : 2;
   const totalPages = Math.ceil(services.length / itemsPerPage);
+  const nextPage = () => setCurrentPage((p) => (p + 1) % totalPages);
+  const prevPage = () => setCurrentPage((p) => (p - 1 + totalPages) % totalPages);
   
   // Eğer resize sonrası currentPage sınırları aşarsa, güvenli bir değerde tutalım
   const safePage = Math.min(currentPage, totalPages - 1 >= 0 ? totalPages - 1 : 0);
   const currentItems = services.slice(safePage * itemsPerPage, (safePage + 1) * itemsPerPage);
+
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    if (!isMobile || totalPages <= 1) return;
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+    touchDelta.current = { x: 0, y: 0 };
+  };
+
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    if (!touchStart.current) return;
+    const t = e.touches[0];
+    touchDelta.current = {
+      x: t.clientX - touchStart.current.x,
+      y: t.clientY - touchStart.current.y,
+    };
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart.current || !touchDelta.current) return;
+    const { x, y } = touchDelta.current;
+    const isSwipe = Math.abs(x) > 50 && Math.abs(x) > Math.abs(y) * 1.2;
+    if (isSwipe) {
+      if (x < 0) nextPage();
+      else prevPage();
+    }
+    touchStart.current = null;
+    touchDelta.current = null;
+  };
 
   return (
     <section className="relative w-full py-12 md:py-24 overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/5"
@@ -89,7 +121,13 @@ export default function MyServices() {
         </div>
 
         {/* PROJE KARTLARI - ANIMASYONLU GEÇİŞ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-[450px] md:min-h-[500px]">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-[450px] md:min-h-[500px] touch-pan-y"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+        >
           <AnimatePresence mode="wait">
             {currentItems.map((service, idx) => {
               const globalIdx = safePage * itemsPerPage + idx;

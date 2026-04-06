@@ -36,7 +36,7 @@ export const languageData = {
           title: "JobCraft Cv Builder",
           desc: "Ekipçe geliştirdiğimiz cv hazırlama web uygulamasında ilk kez TypeScript yazarak temelimi oluşturdum ve takım çalışması deneyimi kazandım. Çok sayfalı akışları yönetmek için Redux Toolkit kullandık; CV adımlarını form yapısıyla kurup kullanıcı verisini Redux'ta tutarak canlı önizleme sağladım. İçerik yüksekliğini ölçen özel bir hook ile ikinci sayfaya otomatik geçişi çözdüm. Backend API'lerini Insomnia ile doğrulayıp entegre ettim. Yayına hazırlanan projede frontend geliştirici olarak aktif rol alıyorum.",
           github: "#",
-          website: "https://jobcraft-b23fc.web.app/"
+          website: "https://jobcraft.dev/"
         },
         {
           title: "TrendKod",

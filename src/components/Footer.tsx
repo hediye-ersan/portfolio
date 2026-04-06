@@ -36,7 +36,7 @@ export default function Footer() {
               </span>
               <span className="text-lg font-semibold tracking-wide">{currentLang.footer.brand.name}</span>
             </div>
-            <p className="text-sm leading-relaxed text-gray-300">
+            <p className="text-sm leading-relaxed text-gray-300 text-justify">
               {currentLang.footer.brand.description}
             </p>
             
